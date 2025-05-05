@@ -2,16 +2,34 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/Sh4re!.svg" />
+    <link rel="icon" type="image/svg+xml" href="./sh4reIcon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./styles/style.scss" />
     <title>Sh4re!</title>
   </head>
   <body>
     <header id="page-header">
-      <h1>Sh4re! 코드 공유 서비스</h1>
+      <div class="header-logo">
+        <ul class="logo">
+          <li class="icon">
+            <a href="/">
+              <img src="./sh4reLogo.svg" alt="sh4re-logo" height="20px" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-menu">
+        <ul class="menu">
+          <li class="code-btn">
+            <button class="create-code-btn">코드 작성</button>
+          </li>
+          <li class="user-name">
+            <div>1217채근영</div>
+          </li>
+          <li class="login"><div>로그아웃</div></li>
+        </ul>
+      </div>
     </header>
-
     <main id="main-content">
       <h2>코드 목록</h2>
       <div id="post-list-container"></div>
@@ -21,6 +39,6 @@
       <p>&copy; 2025 Team-Sh4re</p>
     </footer>
 
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
