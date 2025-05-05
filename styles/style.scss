@@ -49,16 +49,49 @@ body {
     color: black;
 
     &:hover {
-      background-color: black;
+      background-color: #007bff;
       color: white;
-      border: 1px solid white;
+      border: 1px solid black;
     }
   }
 }
 
-#main-content {
-  padding: 15px;
-  min-height: 600px;
+.tab-menu {
+  padding: 0 60px;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+
+    .tab-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 6px 8px 0;
+      text-decoration: none;
+      color: #495057;
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+
+      &:hover {
+        color: #0056b3;
+      }
+
+      &.active {
+        color: #007bff;
+        border-bottom-color: #007bff;
+      }
+    }
+    .tab-icon {
+      height: 1.8em;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
 }
 
 #page-footer {
