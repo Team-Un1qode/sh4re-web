@@ -1,19 +1,17 @@
-document.querySelector("#app").innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`;
+import "/styles/style.scss";
 
-setupCounter(document.querySelector("#counter"));
+import hljs from "highlight.js/lib/core";
+import python from "highlight.js/lib/languages/python";
+import xml from "highlight.js/lib/languages/xml"; // HTML용
+import javascript from "highlight.js/lib/languages/javascript";
+import css from "highlight.js/lib/languages/css";
+import "highlight.js/styles/atom-one-dark.css";
+
+hljs.registerLanguage("python", python);
+hljs.registerLanguage("html", xml);
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("css", css);
+
+document.addEventListener("DOMContentLoaded", () => {
+  hljs.highlightAll();
+});
