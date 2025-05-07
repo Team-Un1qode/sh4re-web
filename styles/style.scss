@@ -47,6 +47,19 @@ body {
       color: white;
     }
   }
+  .login-btn {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
 }
 
 .tab-menu {
@@ -139,4 +152,8 @@ body {
   padding: 10px;
   text-align: center;
   font-size: 0.8em;
+}
+
+.hidden {
+  display: none !important;
 }
