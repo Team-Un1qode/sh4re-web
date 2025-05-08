@@ -168,7 +168,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; // 다른 요소들 위에 표시
+  z-index: 1000;
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -189,12 +189,11 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   width: 425px;
   height: 550px;
-  position: relative; // 닫기 버튼 위치 기준
+  position: relative;
   transform: translateY(0);
   transition: transform 0.3s ease-in-out;
 
   .modal-overlay.hidden & {
-    // 모달이 숨겨질 때 약간 위로 올라가는 효과
     transform: translateY(-20px);
   }
 
