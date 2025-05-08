@@ -262,6 +262,40 @@ for i in range(1, 10):
     <footer id="page-footer">
       <p>&copy; 2025 Team-Sh4re</p>
     </footer>
+
+    <div id="login-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <button class="modal-close-btn">&times;</button>
+        <img src="/sh4reLogo.svg" class="login-sh4re-icon" />
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username" class="visually-hidden">로그인</label>
+            <input
+              placeholder="아이디"
+              type="text"
+              id="username"
+              name="username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password" class="visually-hidden">비밀번호</label>
+            <input
+              placeholder="비밀번호"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <button type="submit" class="login-submit-btn">로그인</button>
+        </form>
+        <div class="modal-options">
+          <a href="#" class="create-account">아직 계정이 없으신가요?</a>
+        </div>
+      </div>
+    </div>
     <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/login.js"></script>
   </body>
 </html>
