@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Pen+Script&display=swap");
+
+body,
+html {
+  overflow-x: hidden;
+}
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+#page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  margin: 0 auto;
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box; // padding, border가 width/height에 포함되도록
+
+  .header-logo ul.logo {
+    list-style: none;
+    padding-left: 0; // 기본 list 왼쪽 여백 제거
+  }
+
+  .header-menu ul.menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    gap: 12px;
+  }
+
+  .create-code-btn {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: black;
+    font-size: 14px;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  .create-content-box {
+    width: 800px;
+    height: 680px;
+    border: 1px solid #e0e0e0;
+    .title-box {
+      width: 800px;
+      height: 70px;
+      border: 1px solid #e0e0e0;
+    }
+  }
+}
