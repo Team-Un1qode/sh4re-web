@@ -13,7 +13,7 @@ export const customFetch = async (url, option) => {
     });
     const result = {
       ok: res.ok,
-      data: res.json(),
+      data: await res.json(),
       error: null,
     };
     return result;

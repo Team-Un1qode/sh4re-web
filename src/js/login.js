@@ -32,10 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    const res = await customFetch("http://114.205.33.109:9090", {
-      method: "POST",
-      body: { name: username, password },
-    });
+    const res = await customFetch(
+      "http://114.205.33.109:9090/api/auth/signin",
+      {
+        method: "POST",
+        body: { name: username, password },
+      }
+    );
     if (res.error) {
       alert("요청 중 에러가 발생했습니다.");
       return;
