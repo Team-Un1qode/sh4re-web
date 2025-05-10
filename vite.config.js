@@ -1,9 +1,16 @@
 import { resolve } from "node:path";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
+
 const root = resolve(__dirname, "src");
 const publicDir = resolve(__dirname, "public");
-export default defineConfig({
-  root,
-  publicDir,
-  appType: "mpa",
-});
+
+export default ({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+
+  return defineConfig({
+    root,
+    publicDir,
+    envDir: ".env",
+    appType: "mpa",
+  });
+};

@@ -1,12 +1,12 @@
 export const customFetch = async (url, option) => {
   try {
     const { method, body } = option;
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("accessToken");
     const headers = {
       "Content-Type": "application/json",
       Authorization: token ? `Bearer ${token}` : "",
     };
-    const res = await fetch(url, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}${url}`, {
       method,
       headers,
       body: JSON.stringify(body),

@@ -32,13 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    const res = await customFetch(
-      "http://114.205.33.109:9090/api/auth/signin",
-      {
-        method: "POST",
-        body: { name: username, password },
-      }
-    );
+    const res = await customFetch("/api/auth/signin", {
+      method: "POST",
+      body: { name: username, password },
+    });
     if (res.error) {
       alert("요청 중 에러가 발생했습니다.");
       return;
@@ -46,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (res.ok) {
       console.log(res.data);
+      // cookie 설정
     } else {
       alert("ID 또는 PW가 잘못됐습니다.");
       // loginModal.classList.add("hidden");
