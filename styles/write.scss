@@ -52,15 +52,67 @@ body {
 
 main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   .create-content-box {
     width: 800px;
-    height: 680px;
+    height: 600px;
     border: 1px solid #e0e0e0;
-    .title-box {
-      width: 800px;
-      height: 70px;
-      border: 1px solid #e0e0e0;
+  }
+  .input-box {
+    box-sizing: border-box;
+    border: none;
+    resize: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  .title {
+    height: 10%;
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 10px 10px;
+    &::placeholder {
+      font-size: 2rem;
+    }
+  }
+  .code {
+    width: 100%;
+    height: 90%;
+    padding: 10px 10px;
+    &::placeholder {
+      font-size: 1rem;
+    }
+  }
+  .submit-code-box {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    height: 60px;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    box-sizing: border-box;
+    .exit {
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #6c757d;
+      padding: 8px 8px;
+      &:hover {
+        color: #343a40;
+      }
+    }
+    .share {
+      border: none;
+      background-color: #0095ff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 10px 24px;
     }
   }
 }
