@@ -1,4 +1,4 @@
-.hidden {
+.hidden-signup {
   display: none !important;
 }
 
@@ -36,6 +36,10 @@
   position: relative;
   transform: translateY(0);
   transition: transform 0.3s ease-in-out;
+
+  &.expanded {
+    height: 600px;
+  }
 
   .modal-overlay.hidden & {
     transform: translateY(-20px);
@@ -89,6 +93,19 @@
         border-color: #007bff;
         outline: none;
         box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      }
+    }
+    .student-number-box {
+      display: flex;
+      justify-content: space-between;
+      .student-number {
+        width: 30%;
+        height: 60px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 1em;
       }
     }
   }
