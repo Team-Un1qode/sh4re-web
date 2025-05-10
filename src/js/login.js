@@ -1,3 +1,5 @@
+import { customFetch } from "/js/common";
+
 document.addEventListener("DOMContentLoaded", () => {
   const loginModal = document.getElementById("login-modal");
   const openLoginModalBtn = document.querySelector(".header-menu .login-btn");
@@ -25,17 +27,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  loginForm.addEventListener("submit", (event) => {
+  loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    console.log(`로그인 시도: 아이디 - ${username}`);
-    alert(
-      `${username}님, 로그인 시도되었습니다. 입력된 비밀번호는 ${password}입니다`
-    );
+    const res = await customFetch("http://114.205.33.109:9090", {
+      method: "POST",
+      body: { name: username, password },
+    });
+    if (res.error) {
+      alert("요청 중 에러가 발생했습니다.");
+      return;
+    }
 
-    loginModal.classList.add("hidden");
-    loginForm.reset();
+    if (res.ok) {
+      console.log(res.data);
+    } else {
+      alert("ID 또는 PW가 잘못됐습니다.");
+      // loginModal.classList.add("hidden");
+      // loginForm.reset();
+    }
   });
 });
