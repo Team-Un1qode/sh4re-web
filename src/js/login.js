@@ -1,3 +1,4 @@
+import { getCookie, setCookie } from "./common";
 import { customFetch } from "/js/common";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -42,12 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (res.ok) {
-      console.log(res.data);
-      // cookie 설정
+      const {
+        data: {
+          data: { accessToken, refreshToken },
+        },
+      } = res;
+      console.log(res);
+      setCookie("accessToken", refreshToken, 30);
+      alert(`${username}님 환영합니다!`);
+      location.reload(true);
     } else {
       alert("ID 또는 PW가 잘못됐습니다.");
-      // loginModal.classList.add("hidden");
-      // loginForm.reset();
     }
   });
 });
