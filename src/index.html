@@ -292,29 +292,29 @@ for i in range(1, 10):
               required
             />
           </div>
-          <div class="form-group">
+          <div id="signup-form">
             <div class="student-number-box">
               <label for="grade" class="visually-hidden">학년</label>
               <select name="grade" id="grade" class="student-number">
                 <option value="default" disabled selected>학년</option>
-                <option value="1st-grade">1학년</option>
-                <option value="2nd-grade">2학년</option>
-                <option value="3rd-grade">3학년</option>
+                <option value="1">1학년</option>
+                <option value="2">2학년</option>
+                <option value="3">3학년</option>
               </select>
               <label for="class" class="visually-hidden">반</label>
-              <select name="class" id="class" class="student-number">
+              <select name="classNumber" id="class" class="student-number">
                 <option value="default" disabled selected>반</option>
-                <option value="1st-class">1반</option>
-                <option value="2nd-class">2반</option>
-                <option value="3rd-class">3반</option>
-                <option value="4th-class">4반</option>
+                <option value="1">1반</option>
+                <option value="2">2반</option>
+                <option value="3">3반</option>
+                <option value="4">4반</option>
               </select>
               <label for="number" class="visually-hidden">번호</label>
               <input
                 placeholder="번호"
                 type="text"
                 id="number"
-                name="number"
+                name="studentNumber"
                 min="0"
                 max="19"
                 pattern="^(?:[1-9]|1[0-9])$"

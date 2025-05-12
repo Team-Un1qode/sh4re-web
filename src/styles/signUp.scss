@@ -67,7 +67,7 @@
     margin-top: 30px;
   }
 
-  .form-group {
+  .signup-form {
     margin-bottom: 10px;
 
     .visually-hidden {
@@ -98,6 +98,7 @@
     .student-number-box {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 10px;
       .student-number {
         width: 30%;
         height: 60px;

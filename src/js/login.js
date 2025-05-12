@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openLoginModalBtn: document.querySelector(".header-menu .login-btn"),
     closeLoginModalBtn: document.querySelector(".modal-close-btn"),
     loginForm: document.getElementById("login-form"),
+    signUpForm: document.getElementById("signup-form"),
     createCodeBtn: document.querySelector(".create-code-btn"),
     userNameDisplay: document.querySelector(".user-name-text"),
     userNameBox: document.querySelector(".user-name"),
@@ -55,8 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setCookie("accessToken", newAccessToken, 30);
             setCookie("refreshToken", newRefreshToken, 30);
 
-            // 새로운 Access Token으로 다시 사용자 정보 요청
-            res = await customFetch("/api/auth/info", { method: "POST" });
+            res = await customFetch("/api/auth/info", { method: "GET" });
           } else {
             console.error(
               "Refresh Token으로 Access Token 갱신 실패:",
@@ -176,11 +176,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const handleSignUpSubmit = async (event) => {
+    event.preventDefault();
+    const username = event.target.username.value;
+    const name = event.target.name.value;
+    const password = event.target.password.value;
+    const grade = parseInt(event.target.grade.value);
+    const classNumber = parseInt(event.target.classNumber.value);
+    const studentNumber = parseInt(event.target.studentNumber.value);
+
+    try {
+      const res = await customFetch("/api/auth/signup", {
+        method: "POST",
+        body: {
+          username: username,
+          name,
+          password,
+          grade,
+          classNumber,
+          studentNumber,
+        },
+      });
+
+      console.log("회원가입 응답 데이터:", res);
+
+      if (!res.error) {
+        alert("성공적으로 회원가입이 완료되었습니다!");
+      } else {
+        alert("회원가입 중 에러가 발생했습니다.(else)");
+        return;
+      }
+    } catch (error) {
+      console.error("회원가입 요청 실패:", error);
+      alert("회원가입 중 문제가 발생했습니다.(catch)");
+    }
+  };
+
   // 초기화 함수
   // 모달, 로그인/로그아웃 이벤트 설정 및 UI 초기화
   const initialize = () => {
     setupModalControls(); // 모달 이벤트 초기화
     elements.loginForm.addEventListener("submit", handleLoginSubmit); // 로그인 폼 제출 이벤트 설정
+    elements.signUpForm.addEventListener("submit", handleSignUpSubmit);
     elements.logoutBtn.addEventListener("click", handleLogout); // 로그아웃 버튼 클릭 이벤트 설정
     renderMainContent(); // 초기 UI 렌더링
   };
