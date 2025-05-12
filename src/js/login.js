@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 사용자 정보 가져오기 성공
         if (res.ok && res.data && res.data.name) {
-          currentUsername = res.data.name;
+          currentUsername = res.data.username;
           console.log("사용자 이름:", currentUsername);
         } else {
           console.error("사용자 정보 가져오기 실패:", res);
