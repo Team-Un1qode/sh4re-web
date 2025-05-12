@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentUsername = ""; // 기본값 초기화
 
       if (accessToken) {
-        let res = await customFetch("/api/auth/info", { method: "POST" });
+        let res = await customFetch("/api/auth/info", { method: "GET" });
         console.log("사용자 정보 응답 데이터:", res);
 
         // Access Token이 만료된 경우
