@@ -95,8 +95,5 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMainContent();
     alert("로그아웃되었습니다.");
   });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    renderMainContent();
-  });
+  renderMainContent();
 });
