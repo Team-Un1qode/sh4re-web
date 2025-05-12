@@ -11,19 +11,11 @@ export const customFetch = async (url, option) => {
       headers,
       body: JSON.stringify(body),
     });
-    const result = {
-      ok: res.ok,
-      data: await res.json(),
-      error: null,
-    };
-    return result;
+    const data = await res.json();
+    return data;
   } catch (e) {
-    console.log(`${url} 요청 중 에러 발생.`, e);
-    return {
-      ok: false,
-      data: null,
-      error: e,
-    };
+    console.error("API 요청 중 에러 발생:", e);
+    return { ok: false, data: null, error: e };
   }
 };
 
