@@ -6,12 +6,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const openLoginModalBtn = document.querySelector(".header-menu .login-btn");
   const closeLoginModalBtn = loginModal.querySelector(".modal-close-btn");
   const loginForm = document.getElementById("login-form");
+  const createCodeBtn = document.querySelector(".create-code-btn");
+  const userNameDisplay = document.querySelector(".user-name-text");
+  const userNameBox = document.querySelector(".user-name");
+  const loginBtn = document.querySelector(".login-btn");
+  const logoutBtn = document.querySelector(".logout-btn");
+
+  let currentUsername = "";
+
+  function renderMainContent() {
+    const accessToken = getCookie("accessToken");
+
+    if (accessToken) {
+      createCodeBtn.classList.remove("hidden");
+      userNameDisplay.textContent = `${currentUsername}님`;
+      userNameBox.classList.remove("hidden");
+      loginBtn.classList.add("hidden");
+      logoutBtn.classList.remove("hidden");
+    } else {
+      createCodeBtn.classList.add("hidden");
+      userNameBox.classList.add("hidden");
+      userNameDisplay.textContent = "";
+      loginBtn.classList.remove("hidden");
+      logoutBtn.classList.add("hidden");
+    }
+  }
 
   if (openLoginModalBtn) {
     openLoginModalBtn.addEventListener("click", () => {
       loginModal.classList.remove("hidden");
     });
   }
+
   closeLoginModalBtn.addEventListener("click", () => {
     loginModal.classList.add("hidden");
   });
@@ -37,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "POST",
       body: { name: username, password },
     });
+
     if (res.error) {
       alert("요청 중 에러가 발생했습니다.");
       return;
@@ -48,12 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
           data: { accessToken, refreshToken },
         },
       } = res;
-      console.log(res);
+
       setCookie("accessToken", refreshToken, 30);
+      currentUsername = username;
       alert(`${username}님 환영합니다!`);
-      location.reload(true);
+      renderMainContent();
+      loginModal.classList.add("hidden");
     } else {
       alert("ID 또는 PW가 잘못됐습니다.");
     }
   });
+
+  logoutBtn.addEventListener("click", () => {
+    setCookie("accessToken", "", -1);
+    currentUsername = "";
+    renderMainContent();
+    alert("로그아웃되었습니다.");
+  });
+
+  renderMainContent();
 });

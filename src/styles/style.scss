@@ -47,6 +47,11 @@ body {
       color: white;
     }
   }
+  .user-name {
+    .user-name-text {
+      cursor: pointer;
+    }
+  }
   .login-btn {
     background-color: white;
     border: 1px solid black;
@@ -59,6 +64,9 @@ body {
       background-color: black;
       color: white;
     }
+  }
+  .logout-btn {
+    cursor: pointer;
   }
 }
 
