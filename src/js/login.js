@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 로그인 API 호출
       const res = await customFetch("/api/auth/signin", {
         method: "POST",
-        body: { name: username, password },
+        body: { username: username, password },
       });
 
       console.log("로그인 응답 데이터:", res);
