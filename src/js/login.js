@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderMainContent() {
     const accessToken = getCookie("accessToken");
+    currentUsername = getCookie("currentUsername") || "";
 
     if (accessToken) {
       createCodeBtn.classList.remove("hidden");
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } = res;
 
       setCookie("accessToken", refreshToken, 30);
+      setCookie("currentUsername", username, 30);
       currentUsername = username;
       alert(`${username}님 환영합니다!`);
       renderMainContent();
@@ -88,10 +90,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   logoutBtn.addEventListener("click", () => {
     setCookie("accessToken", "", -1);
+    setCookie("currentUsername", "", -1);
     currentUsername = "";
     renderMainContent();
     alert("로그아웃되었습니다.");
   });
 
-  renderMainContent();
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMainContent();
+  });
 });
