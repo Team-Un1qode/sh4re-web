@@ -1,0 +1,34 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  gap: 20px;
+  .code-box {
+    width: 35rem;
+    height: 35rem;
+    border: 1px solid #e0e0e0;
+    .code-text {
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+
+      pre {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      code {
+        width: 100%;
+        height: 100%;
+        white-space: pre-wrap;
+      }
+    }
+  }
+  .detail-box {
+    width: 35rem;
+    height: 35rem;
+    border: 1px solid #e0e0e0;
+  }
+}
