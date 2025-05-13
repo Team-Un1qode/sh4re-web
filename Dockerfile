@@ -14,6 +14,7 @@ FROM nginx:stable-alpine
 
 RUN mkdir -p /tmp/nginx/client_temp \
     && chmod -R 777 /tmp/nginx
+RUN mkdir -p /tmp/nginx /run && chmod -R 777 /tmp /run
 
 COPY --from=build /app/dist /var/www/html
 
