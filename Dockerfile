@@ -12,6 +12,8 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
+USER root
+
 COPY --from=build /app/dist /var/www/html
 
 # 기본 nginx 설정 파일을 삭제한다. (custom 설정과 충돌 방지)
