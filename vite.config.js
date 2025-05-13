@@ -12,5 +12,15 @@ export default ({ mode }) => {
     publicDir,
     envDir: ".env",
     appType: "mpa",
+    build: {
+      outDir: "../dist",
+      emptyOutDir: true,
+      rollupOptions: {
+        input: {
+          main: resolve(root, "index.html"),
+          write: resolve(root, "write.html"),
+        },
+      },
+    },
   });
 };
