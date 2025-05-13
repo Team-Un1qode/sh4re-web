@@ -1,5 +1,3 @@
-import "/styles/style.scss";
-import "/styles/signUp.scss";
-import "/styles/login.scss";
-import "/components/header/header.js";
-import { customFetch } from "./common";
+import "/src/styles/style.scss";
+import "/src/styles/login.scss";
+import "/src/components/header/header.js";

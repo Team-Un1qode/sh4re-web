@@ -1,5 +1,5 @@
-import { getCookie, setCookie } from "./common";
-import { customFetch } from "/js/common";
+import { getCookie, setCookie } from "./common.js";
+import { customFetch } from "./common.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // DOM 요소 모음 (자주 사용되는 버튼/텍스트/폼 등을 변수화)
