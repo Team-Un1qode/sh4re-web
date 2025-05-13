@@ -1,13 +1,16 @@
+@import url(./style.scss);
+$main-color: #007bff;
+$main-bg-color: #0095ff;
+
 main {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 85vh;
   gap: 20px;
   .code-box {
-    width: 35rem;
-    height: 35rem;
+    width: 50vw;
+    height: 80vh;
     border: 1px solid #e0e0e0;
+    box-sizing: border-box;
     .code-text {
       overflow-x: hidden;
       width: 100%;
@@ -22,14 +25,27 @@ main {
       code {
         width: 100%;
         height: 100%;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         white-space: pre-wrap;
       }
     }
   }
   .detail-box {
-    width: 35rem;
-    height: 35rem;
+    display: flex;
+    justify-content: center;
+    width: 20vw;
+    height: 80vh;
     border: 1px solid #e0e0e0;
+    .download-btn {
+      align-self: self-end;
+      margin-bottom: 25px;
+      background-color: $main-bg-color;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      height: 40px;
+      width: 90%;
+    }
   }
 }
