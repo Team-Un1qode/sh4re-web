@@ -202,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!res.error) {
         alert("성공적으로 회원가입이 완료되었습니다!");
+        window.location.reload();
       } else {
         alert("회원가입 중 에러가 발생했습니다.(else)");
         return;
