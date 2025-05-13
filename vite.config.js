@@ -9,7 +9,7 @@ export default ({ mode }) => {
     envDir: ".env",
     appType: "mpa",
     build: {
-      outDir: "../dist",
+      outDir: "dist",
       rollupOptions: {
         input: {
           main: resolve(__dirname, "index.html"),
