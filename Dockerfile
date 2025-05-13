@@ -12,7 +12,8 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
-USER root
+RUN mkdir -p /tmp/nginx/client_temp \
+    && chmod -R 777 /tmp/nginx
 
 COPY --from=build /app/dist /var/www/html
 
@@ -20,7 +21,7 @@ COPY --from=build /app/dist /var/www/html
 RUN rm /etc/nginx/conf.d/default.conf
 
 # custom 설정파일을 컨테이너 내부로 복사한다.
-COPY nginx.conf /etc/nginx/conf.d
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # 컨테이너의 80번 포트를 열어준다.
 EXPOSE 8080
