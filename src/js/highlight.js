@@ -10,8 +10,4 @@ hljs.registerLanguage("html", xml);
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("css", css);
 
-document.addEventListener("DOMContentLoaded", () => {
-  hljs.highlightAll();
-});
-
 export default hljs;
