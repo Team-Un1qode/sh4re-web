@@ -20,7 +20,7 @@ export default ({ mode }) => {
         input: {
           main: resolve(__dirname, "index.html"),
           write: resolve(__dirname, "write.html"),
-          post: resolve(__dirname, "post.html")
+          code: resolve(__dirname, "code.html")
         }
       }
     },

@@ -22,7 +22,9 @@ export const getElements = () => {
   }
 }
 
-export const customFetch = async (url, option) => {
+export const customFetch = async (url, option = {
+  method: "GET",
+}) => {
   try {
     const { method, body } = option;
     const token = getCookie("accessToken");
