@@ -1,8 +1,9 @@
 import "/styles/style.scss";
 import "/styles/signUp.scss";
 import "/styles/login.scss";
+import "/styles/code.scss";
 import "/components/header/header.js";
 import "/components/login-modal/login-modal.js";
-import "./auth.js"
-import "./highlight.js"
-import "./webBasic.js"
+import "./auth.js";
+import "./highlight.js";
+import "./webBasic.js";
