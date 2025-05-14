@@ -10,25 +10,15 @@
   <body>
     <main>
       <div class="create-content-box">
-        <textarea
-          class="input-box title"
-          placeholder="제목을 입력하세요"
-        ></textarea>
-        <textarea
-          class="input-box code"
-          placeholder="코드를 입력하세요"
-        ></textarea>
-      </div>
-      <div class="submit-code-box">
-        <button class="exit">
-          <a class="exit" href="/">&LeftArrow; 나가기</a>
-        </button>
-        <button class="share">코드 공유</button>
+        <textarea class="title" placeholder="제목을 입력하세요"></textarea>
+        <div class="code-box">
+          <textarea class="code" placeholder="코드를 입력하세요"></textarea>
+          <div class="submit-code-box">
+            <button class="share">코드 공유</button>
+          </div>
+        </div>
       </div>
     </main>
-    <footer id="page-footer">
-      <p>&copy; 2025 Team-Sh4re</p>
-    </footer>
     <script type="module" src="/js/main.js"></script>
   </body>
 </html>
