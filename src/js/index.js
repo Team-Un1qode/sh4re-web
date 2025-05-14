@@ -1,15 +1,16 @@
-import {customFetch} from "/js/common.js";
+import { customFetch } from "/js/common.js";
 import hljs from "highlight.js";
 
-document.addEventListener("DOMContentLoaded", async() => {
-    const codes = await customFetch("/codes?page=1");
+document.addEventListener("DOMContentLoaded", async () => {
+  const codes = await customFetch("/codes?page=1");
 
-    if (codes.ok && codes.data) {
-        for (let i = 0; i < codes.data.codes.length; i++) {
-            const code = codes.data.codes[i];
-            const article = document.createElement("article");
-            article.className = "post-list-box";
-            article.innerHTML = `
+  if (codes.ok && codes.data) {
+    for (let i = 0; i < codes.data.codes.length; i++) {
+      const code = codes.data.codes[i];
+      const article = document.createElement("article");
+      article.className = "post-list-box";
+      article.innerHTML = `
+                <a href="/code?id=${code.id}" class="detail-page">
                 <div class="code-text">
                     <pre><code class="language-python">${code.code}</code></pre>
                 </div>
@@ -20,10 +21,15 @@ document.addEventListener("DOMContentLoaded", async() => {
                         <p className="like-count">${code.likes}</p>
                     </div>
                 </div>
-                `
-            document.getElementById("post-list-container").appendChild(article);
-        }
-        hljs.highlightAll();
+                </a>
+                `;
+      document.getElementById("post-list-container").appendChild(article);
     }
-})
+    hljs.highlightAll();
+  }
+});
 
+const postListBox = document.querySelector(".post-list-box");
+postListBox.addEventListener("click", () => {
+  document.location.href = `${code.id}`;
+});
