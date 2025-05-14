@@ -5,3 +5,4 @@ import "/components/header/header.js";
 import "/components/login-modal/login-modal.js";
 import "./auth.js"
 import "./highlight.js"
+import "./webBasic.js"
