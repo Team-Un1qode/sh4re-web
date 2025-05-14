@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await res.data;
     if (data && data.code) {
       codeElement.textContent = data.code;
+      await hljs.highlightAll();
     } else {
       console.error("서버에서 유효한 코드 데이터를 반환X");
     }
