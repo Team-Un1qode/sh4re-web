@@ -34,6 +34,6 @@ jobs:
                   value: https://port-0-sh4re-server-malnu3or6bb092b3.sel4.cloudtype.app
             context:
               git:
-                url: git@github.com:${{ github.repository }}.git
+                url: git@github.com:team-sh4re/${{ github.repository }}.git
                 ref: ${{ github.ref }}
               preset: dockerfile
