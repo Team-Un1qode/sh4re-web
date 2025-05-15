@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const codeElement = document.querySelector(".code");
   const urlParams = new URLSearchParams(window.location.search);
   const postId = urlParams.get("id");
+  const titleBox = document.querySelector(".title");
+  const descriptionBox = document.querySelector(".description");
+  const userInformationBox = document.querySelector(".user-info");
 
   try {
     const res = await customFetch(`/codes/${postId}`, {
@@ -17,6 +20,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
     const data = await res.data;
+    const formattedStudentNumber = String(data.user.studentNumber).padStart(
+      2,
+      "0"
+    );
+    titleBox.innerText = `${data.title}`;
+    descriptionBox.innerText = `${data.description}`;
+    userInformationBox.innerText = `${data.user.grade}${data.user.classNumber}${formattedStudentNumber}${data.user.name}(${data.user.username})`;
     if (data && data.code) {
       codeElement.textContent = data.code;
       await hljs.highlightAll();
