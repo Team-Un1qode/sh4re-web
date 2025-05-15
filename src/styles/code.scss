@@ -17,6 +17,7 @@ main {
     resize: none;
     .code-text {
       height: 100%;
+      box-sizing: border-box;
       pre {
         position: relative;
         width: 100%;
