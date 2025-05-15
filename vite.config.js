@@ -9,10 +9,10 @@ export default ({ mode }) => {
     appType: "mpa",
     resolve: {
       alias: {
-        '/js': resolve(__dirname, 'src/js'),
-        '/styles': resolve(__dirname, 'src/styles'),
-        '/components': resolve(__dirname, 'src/components'),
-      }
+        "/js": resolve(__dirname, "src/js"),
+        "/styles": resolve(__dirname, "src/styles"),
+        "/components": resolve(__dirname, "src/components"),
+      },
     },
     build: {
       outDir: "dist",
@@ -20,9 +20,10 @@ export default ({ mode }) => {
         input: {
           main: resolve(__dirname, "index.html"),
           write: resolve(__dirname, "write.html"),
-          code: resolve(__dirname, "code.html")
-        }
-      }
+          code: resolve(__dirname, "code.html"),
+          user: resolve(__dirname, "user.html"),
+        },
+      },
     },
   });
 };
