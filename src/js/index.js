@@ -35,8 +35,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     hljs.highlightAll();
   }
 });
-
-const postListBox = document.querySelector(".post-list-box");
-postListBox.addEventListener("click", () => {
-  document.location.href = `${code.id}`;
-});
