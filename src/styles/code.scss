@@ -7,8 +7,8 @@ main {
   justify-content: center;
   gap: 20px;
   .code-box {
-    width: 600px;
-    height: 500px;
+    width: 50rem;
+    height: 40rem;
     box-sizing: border-box;
     resize: none;
     .code-text {
@@ -18,8 +18,8 @@ main {
         overflow: hidden;
       }
       code {
-        width: 600px;
-        height: 500px;
+        width: 40rem;
+        height: 35rem;
         font-size: 1.5rem;
         white-space: pre-wrap;
       }
@@ -28,8 +28,8 @@ main {
   .detail-box {
     display: flex;
     justify-content: center;
-    width: 400px;
-    height: 600px;
+    width: 25rem;
+    height: 40rem;
     border: 1px solid #e0e0e0;
     .copy {
       height: 40px;
