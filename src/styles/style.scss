@@ -151,10 +151,29 @@ body {
     }
     .code-information {
       display: flex;
-      padding: 5px 20px 5px;
+      padding: 6px 20px 0 18px;
       border-top: 1px solid #e0e0e0;
       justify-content: space-between;
       gap: 10px;
+      .info-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+        margin: 0;
+        padding: 0;
+        p {
+          margin: 0;
+          padding: 0;
+        }
+        .title {
+          font-size: 1.2rem;
+          font-weight: 450;
+        }
+        .student-info {
+          font-size: 0.8rem;
+        }
+      }
       .like-box {
         display: flex;
         gap: 4px;

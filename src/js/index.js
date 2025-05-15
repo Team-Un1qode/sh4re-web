@@ -16,14 +16,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       article.innerHTML = `
                 <a href="/code?id=${code.id}" class="detail-page">
                 <div class="code-text">
-                    <pre><code class="language-python">${code.code}</code></pre>
+                  <pre><code class="language-python">${code.code}</code></pre>
                 </div>
                 <div class="code-information">
-                    <p>${code.user.grade}${code.user.classNumber}${formattedStudentNumber}${code.user.name}(${code.user.username})</p>
-                    <div class="like-box">
-                        <img src="/like.svg" alt="likeIcon" width="23px" />
-                        <p className="like-count">${code.likes}</p>
-                    </div>
+                  <div class="info-box">
+                    <p class="title">${code.title}</p>
+                    <p class="student-info">${code.user.grade}${code.user.classNumber}${formattedStudentNumber}${code.user.name}(${code.user.username})</p>
+                  </div>  
+                  <div class="like-box">
+                    <img src="/like.svg" alt="likeIcon" width="23px" />
+                    <p className="like-count">${code.likes}</p>
+                  </div>
                 </div>
                 </a>
                 `;
