@@ -37,20 +37,68 @@ main {
   }
   .detail-box {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     width: 25rem;
     height: 100%;
+    padding: 15px;
     border: 1px solid #e0e0e0;
-    .copy {
-      height: 40px;
-      width: 90%;
-      align-self: flex-end;
-      margin-bottom: 15px;
-      background-color: $main-bg-color;
-      color: white;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
+    .top-box {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .title {
+        font-size: 2rem;
+        font-weight: 500;
+      }
+      .user-info {
+        cursor: pointer;
+        color: black;
+        text-decoration: none;
+      }
+      .description {
+        display: flex;
+        flex-direction: column;
+        #watermark {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+          margin: 15px 5px;
+          align-self: flex-end;
+          color: rgba(0, 0, 0, 0.35);
+          #generate-by-gpt {
+            margin: 0;
+          }
+          #gpt-icon {
+            width: 20px;
+            fill: rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+    .bottom-box {
+      display: flex;
+      gap: 20px;
+      .like-box {
+        display: flex;
+        gap: 5px;
+        #like-icon {
+          width: 25px;
+        }
+        .like-count {
+          // margin: 0;
+        }
+      }
+      .copy {
+        height: 40px;
+        width: 40vw;
+        margin-bottom: 15px;
+        background-color: $main-bg-color;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
     }
   }
 }
