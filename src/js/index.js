@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     for (let i = 0; i < codes.data.codes.length; i++) {
       const code = codes.data.codes[i];
       const article = document.createElement("article");
+      const formattedStudentNumber = String(code.user.studentNumber).padStart(
+        2,
+        "0"
+      );
       article.className = "post-list-box";
       article.innerHTML = `
                 <a href="/code?id=${code.id}" class="detail-page">
@@ -15,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <pre><code class="language-python">${code.code}</code></pre>
                 </div>
                 <div class="code-information">
-                    <p>${code.user.name}</p>
+                    <p>${code.user.grade}${code.user.classNumber}${formattedStudentNumber}${code.user.name}(${code.user.username})</p>
                     <div class="like-box">
                         <img src="/like.svg" alt="likeIcon" width="23px" />
                         <p className="like-count">${code.likes}</p>
