@@ -6,20 +6,29 @@ main {
   display: flex;
   justify-content: center;
   gap: 20px;
+  height: 90%;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  box-sizing: border-box;
   .code-box {
-    width: 50rem;
-    height: 40rem;
+    width: 40vw;
+    height: 100%;
     box-sizing: border-box;
     resize: none;
     .code-text {
+      height: 100%;
       pre {
+        position: relative;
         width: 100%;
         height: 100%;
         overflow: hidden;
+        margin: 0;
       }
       code {
-        width: 40rem;
-        height: 35rem;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
         font-size: 1.5rem;
         white-space: pre-wrap;
       }
@@ -29,7 +38,7 @@ main {
     display: flex;
     justify-content: center;
     width: 25rem;
-    height: 40rem;
+    height: 100%;
     border: 1px solid #e0e0e0;
     .copy {
       height: 40px;
