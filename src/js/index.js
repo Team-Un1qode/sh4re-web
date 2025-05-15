@@ -2,7 +2,7 @@ import { customFetch } from "/js/common.js";
 import hljs from "highlight.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const codes = await customFetch("/codes?page=1");
+  const codes = await customFetch("/codes");
 
   if (codes.ok && codes.data) {
     for (let i = 0; i < codes.data.codes.length; i++) {
