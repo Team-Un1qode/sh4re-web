@@ -49,11 +49,12 @@ body {
       color: white;
     }
   }
-  .user-name {
-    .user-name-text {
-      cursor: pointer;
-    }
+
+  .user-name-text {
+    text-decoration: none;
+    color: black;
   }
+
   .login-btn {
     background-color: white;
     border: 1px solid black;
