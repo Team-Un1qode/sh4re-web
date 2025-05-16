@@ -63,6 +63,10 @@ main {
         cursor: pointer;
         color: black;
         text-decoration: none;
+        .user-page {
+          text-decoration: none;
+          color: black;
+        }
       }
       .description {
         display: flex;
