@@ -83,7 +83,6 @@ body {
     margin: 0;
     padding: 0;
     gap: 10px;
-
     .tab-button {
       display: flex;
       align-items: center;
@@ -111,6 +110,7 @@ body {
   }
   .category {
     text-align: center;
+    border-radius: 5px;
     height: 5vh;
     width: 10vh;
   }
