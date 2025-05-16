@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const titleBox = document.querySelector(".title");
   const descriptionBox = document.querySelector(".description");
   const userInformationBox = document.querySelector(".user-info");
+  const codeBox = document.querySelector(".code-text");
+  let pressedKeys = new Set();
 
   try {
     const res = await customFetch(`/codes/${postId}`, {
@@ -36,6 +38,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
       console.error("서버에서 유효한 코드 데이터를 반환X");
     }
+    document.addEventListener("keydown", (event) => {
+      pressedKeys.add(event.code);
+      if (pressedKeys.has("Escape") && pressedKeys.has("KeyF")) {
+        codeBox.requestFullscreen();
+      }
+    });
+    document.addEventListener("fullscreenchange", () => {
+      if (document.fullscreenElement) {
+        codeElement.style.fontSize = "2rem";
+      } else {
+        codeElement.style.fontSize = "1.5rem";
+      }
+    });
   } catch (e) {
     console.error("API 요청 중 에러", e);
   }
