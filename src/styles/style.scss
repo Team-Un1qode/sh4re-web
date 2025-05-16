@@ -74,7 +74,9 @@ body {
 
 .tab-menu {
   padding: 0 60px;
-
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   ul {
     display: flex;
     list-style: none;
@@ -107,6 +109,11 @@ body {
       width: auto;
     }
   }
+  .category {
+    text-align: center;
+    height: 5vh;
+    width: 10vh;
+  }
 }
 
 #main-content {
@@ -119,7 +126,7 @@ body {
     }
     display: grid;
     gap: 40px;
-    padding: 20px 50px 0;
+    padding: 12px 50px 0;
     grid-template-columns: repeat(auto-fill, 318px);
     justify-content: center;
     .post-list-box {
