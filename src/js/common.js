@@ -2,10 +2,9 @@ let elements = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
   elements = getElements();
-  console.log(elements)
   setupModalControls();
   await renderMainContent();
-})
+});
 
 export const getElements = () => {
   return {
@@ -19,12 +18,15 @@ export const getElements = () => {
     userNameBox: document.querySelector(".user-name"),
     loginBtn: document.querySelector(".login-btn"),
     logoutBtn: document.querySelector(".logout-btn"),
-  }
-}
+  };
+};
 
-export const customFetch = async (url, option = {
-  method: "GET",
-}) => {
+export const customFetch = async (
+  url,
+  option = {
+    method: "GET",
+  }
+) => {
   try {
     const { method, body } = option;
     const token = getCookie("accessToken");
@@ -69,39 +71,34 @@ export function getCookie(cname) {
 }
 
 export const handleLogout = async () => {
-  setCookie("accessToken", "", -1); // 토큰 삭제
-  setCookie("currentUsername", "", -1); // 사용자 이름 삭제
-  await renderMainContent(); // UI 업데이트
+  setCookie("accessToken", "", -1);
+  setCookie("currentUsername", "", -1);
+  await renderMainContent();
   alert("로그아웃되었습니다.");
 };
 
 export const renderMainContent = async () => {
   try {
-    const accessToken = getCookie("accessToken"); // 쿠키에서 Access Token 확인
-    console.log("Access Token:", accessToken); // 디버깅 로그
+    const accessToken = getCookie("accessToken");
 
-    let currentUsername = getCookie("currentUsername"); // 기본값 초기화
+    let currentUsername = getCookie("currentUsername");
 
-    if(currentUsername) setStatusLoggedIn(currentUsername)
-    else setStatusLoggedOut()
+    if (currentUsername) setStatusLoggedIn(currentUsername);
+    else setStatusLoggedOut();
 
     if (accessToken) {
       let res = await customFetch("/api/auth/info", { method: "GET" });
-      console.log("사용자 정보 응답 데이터:", res);
 
-      // Access Token이 만료된 경우
       if (!res.ok && res.data?.code === "INVALID_TOKEN") {
         return handleLogout();
       }
 
-      // 사용자 정보 가져오기 성공
       if (res.ok && res.data && res.data.name) {
         currentUsername = res.data.username;
-        setStatusLoggedIn(currentUsername)
-        console.log("사용자 이름:", currentUsername);
+        setStatusLoggedIn(currentUsername);
       } else {
-        setStatusLoggedOut()
-        await handleLogout()
+        setStatusLoggedOut();
+        await handleLogout();
         console.error("사용자 정보 가져오기 실패:", res);
       }
     }
@@ -116,7 +113,7 @@ const setStatusLoggedOut = () => {
   elements.userNameDisplay.textContent = "";
   elements.loginBtn.classList.remove("hidden");
   elements.logoutBtn.classList.add("hidden");
-}
+};
 
 const setStatusLoggedIn = (currentUsername) => {
   elements.createCodeBtn.classList.remove("hidden");
@@ -125,14 +122,14 @@ const setStatusLoggedIn = (currentUsername) => {
   elements.loginBtn.classList.add("hidden");
   elements.logoutBtn.classList.remove("hidden");
   elements.loginModal.classList.add("hidden"); // 로그인 모달 닫기
-}
+};
 
 export const setupModalControls = () => {
   if (elements.openLoginModalBtn) {
     elements.openLoginModalBtn.addEventListener("click", () => {
-    elements.loginModal.classList.remove("hidden"); // 모달 열기
-  });
-}
+      elements.loginModal.classList.remove("hidden"); // 모달 열기
+    });
+  }
 
   elements.closeLoginModalBtn.addEventListener("click", () => {
     elements.loginModal.classList.add("hidden"); // 모달 닫기
@@ -148,8 +145,8 @@ export const setupModalControls = () => {
   document.addEventListener("keydown", (event) => {
     // ESC 키 입력 시 모달 닫기
     if (
-        event.key === "Escape" &&
-        !elements.loginModal.classList.contains("hidden")
+      event.key === "Escape" &&
+      !elements.loginModal.classList.contains("hidden")
     ) {
       elements.loginModal.classList.add("hidden");
     }
