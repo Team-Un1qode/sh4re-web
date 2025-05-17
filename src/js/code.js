@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const likeCount = document.querySelector(".like-count");
   const topBox = document.querySelector(".top-box");
   const copyButton = document.querySelector(".copy");
+  const deleteButton = document.querySelector(".delete");
   let isCopied = false;
   let likeLoading = false;
 
@@ -33,6 +34,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
     const data = await res.data;
+    if(data.user.id == document.body.dataset.userId) {
+      deleteButton.classList.remove("hidden");
+    }
     const formattedStudentNumber = String(data.user.studentNumber).padStart(
       2,
       "0"
@@ -120,6 +124,17 @@ document.addEventListener("DOMContentLoaded", async () => {
           isCopied = false;
         }, 1000);
       }, 400);
+    })
+    deleteButton.addEventListener("click", async () => {
+      try {
+        if(!confirm("정말로 이 코드를 삭제하시겠습니까?")) return;
+        await customFetch(`/codes/${postId}`, {
+          method: "DELETE"
+        })
+        location.href = "/";
+      } catch (e){
+        alert("게시물 삭제 중 오류가 발생했습니다.")
+      }
     })
   } catch (e) {
     console.error("API 요청 중 에러", e);
