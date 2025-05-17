@@ -7,6 +7,10 @@ main {
   padding: 15px;
   height: 90%;
   box-sizing: border-box;
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px 1fr;
+  }
 }
 
 .content-box {
@@ -18,8 +22,11 @@ main {
     align-items: center;
     font-size: 1.5rem;
     font-weight: 500;
-    border-bottom: 1px solid #e0e0e0;
+    border: 1px solid black;
     border-radius: 5px 5px 0 0;
+    &:focus {
+      outline: none;
+    }
   }
   .code-box {
     position: relative;
@@ -36,6 +43,9 @@ main {
       font-size: 1rem;
       border: none;
       resize: none;
+      &:focus {
+        outline: none;
+      }
     }
     pre {
       height: 100%;
@@ -58,6 +68,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  padding-bottom: 0;
   overflow: hidden;
   .assignment-list {
     display: flex;
@@ -76,9 +87,10 @@ main {
         display: flex;
         flex-direction: column;
         gap: 5px;
-        h3{
+        h3 {
           margin: 0;
           font-size: 20px;
+          font-weight: 500;
         }
         h4 {
           margin: 0;
