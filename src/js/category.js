@@ -1,10 +1,14 @@
-import { customFetch } from "/js/common.js";
+import { customFetch, loadCodes } from "/js/common.js";
 
 const searchParams = new URLSearchParams(window.location.search);
 let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
 let assignmentValue = searchParams.get("assignmentId") ?? "";
 const page = searchParams.get("page") ?? 1;
+
+const reloadCodes = () => {
+  loadCodes(sortValue, classValue, assignmentValue);
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
   const categoryAssignment = document.querySelector(".category-assignment");
@@ -24,6 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (categoryAssignment) categoryAssignment.value = assignmentValue;
     if (categoryClass) categoryClass.value = classValue;
     if (categorySort) categorySort.value = sortValue;
+
     for (let i = 0; i < data.assignments.length; i++) {
       const assignment = data.assignments[i];
       const option = document.createElement("option");
@@ -31,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       option.textContent = assignment.title;
       categoryAssignment.appendChild(option);
     }
+    if (categoryAssignment) categoryAssignment.value = assignmentValue;
     categoryAssignment.addEventListener("change", function () {
       assignmentValue = this.value;
       window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
@@ -43,6 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       sortValue = this.value;
       window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
+    reloadCodes();
   } catch (e) {
     console.error("API 요청 중 에러", e);
   }
