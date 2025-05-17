@@ -1,4 +1,10 @@
-import { customFetch } from "/js/common.js";
+import {customFetch, loadCodes} from "/js/common.js";
+
+let assignmentValue, classValue, sortValue;
+
+const reloadCodes = () => {
+  loadCodes(sortValue, classValue, assignmentValue);
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   const categoryAssignment = document.querySelector(".category-assignment");
@@ -23,16 +29,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       categoryAssignment.appendChild(option);
     }
     categoryAssignment.addEventListener("change", function () {
-      const assignmentValue = this.value;
-      console.log(`option.id = ${assignmentValue}`); // 과제 카테고리 변경 시 value 반환
+      assignmentValue = this.value;
+      reloadCodes();
     });
     categoryClass.addEventListener("change", function () {
-      const classValue = this.value;
-      console.log(`class.id = ${classValue}`);
+      classValue = this.value;
+      reloadCodes();
     });
     categorySort.addEventListener("change", function () {
-      const sortValue = this.value;
-      console.log(`sort.id = ${sortValue}`);
+      sortValue = this.value;
+      reloadCodes();
     });
   } catch (e) {
     console.error("API 요청 중 에러", e);
