@@ -197,3 +197,12 @@ export function formatISOToKoreanDate(isoString) {
 
   return `${year}년 ${month}월 ${day}일`;
 }
+
+export function escapeHTML(str) {
+  return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+}
