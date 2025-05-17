@@ -1,10 +1,9 @@
-import {customFetch, loadCodes} from "/js/common.js";
+import {customFetch} from "/js/common.js";
 
-let assignmentValue, classValue, sortValue;
-
-const reloadCodes = () => {
-  loadCodes(sortValue, classValue, assignmentValue);
-}
+const searchParams = new URLSearchParams(window.location.search);
+let sortValue = searchParams.get("criteria") ?? "";
+let classValue = searchParams.get("classNo") ?? "";
+let assignmentValue = searchParams.get("assignmentId") ?? "";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const categoryAssignment = document.querySelector(".category-assignment");
@@ -30,15 +29,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     categoryAssignment.addEventListener("change", function () {
       assignmentValue = this.value;
-      reloadCodes();
+      window.location.href = `/?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
     categoryClass.addEventListener("change", function () {
       classValue = this.value;
-      reloadCodes();
+      window.location.href = `/?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
     categorySort.addEventListener("change", function () {
       sortValue = this.value;
-      reloadCodes();
+      window.location.href = `/?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
   } catch (e) {
     console.error("API 요청 중 에러", e);
