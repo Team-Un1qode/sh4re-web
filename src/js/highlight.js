@@ -1,6 +1,6 @@
 import hljs from "highlight.js/lib/core";
 import python from "highlight.js/lib/languages/python";
-import xml from "highlight.js/lib/languages/xml"; // HTML용
+import xml from "highlight.js/lib/languages/xml";
 import javascript from "highlight.js/lib/languages/javascript";
 import css from "highlight.js/lib/languages/css";
 import "highlight.js/styles/atom-one-dark.css";
