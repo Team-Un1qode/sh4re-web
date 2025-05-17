@@ -243,9 +243,9 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
+      padding: 20px;
       margin-bottom: 10px;
-      border: 1px solid #000;
+      border: 1px solid #a9a9a9;
       border-radius: 5px;
       background-color: #fff;
       cursor: pointer;
@@ -256,16 +256,9 @@ body {
       }
 
       &.selected {
-        background-color: $blue;
-        color: #fff;
+        transition: all 0.05s;
+        border: 2px solid $blue;
         .detail {
-          .task-type {
-            color: #fff;
-          }
-          .edit-icon,
-          .delete-icon {
-            fill: rgb(181, 181, 181);
-          }
           .edit-icon:hover {
             fill: #ffc107;
           }
@@ -315,10 +308,10 @@ body {
       border-radius: 5px;
       background-color: #fff;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
+      transition: all 0.05s;
 
       &:hover {
-        background-color: #000;
+        background-color: #898989;
         border-color: #fff;
         color: #fff;
       }
