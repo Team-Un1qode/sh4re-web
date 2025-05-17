@@ -76,7 +76,6 @@ body {
   .tab-menu {
     padding: 0 60px 0 0;
     width: 68vw;
-    align-items: flex-end;
     justify-self: flex-end;
     ul {
       display: flex;
@@ -109,11 +108,16 @@ body {
         width: auto;
       }
     }
-    .category {
-      text-align: center;
-      border-radius: 5px;
-      height: 5vh;
-      width: 10vh;
+    .category-box {
+      display: flex;
+      margin-top: 20px;
+      gap: 10px;
+      .category {
+        text-align: center;
+        border-radius: 5px;
+        height: 3vh;
+        width: 8vh;
+      }
     }
   }
 
@@ -246,15 +250,22 @@ body {
       }
 
       .task-title {
-        font-size: 1.2rem;
-      }
-      .edit-icon {
-        width: 1rem;
+        font-size: 1rem;
       }
 
-      .task-type {
-        font-size: 0.8rem;
-        color: gray;
+      .detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        .task-type {
+          font-size: 0.8rem;
+          color: gray;
+        }
+        .edit-icon {
+          width: 20px;
+          fill: rgb(66, 66, 66);
+        }
       }
     }
   }

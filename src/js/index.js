@@ -1,5 +1,4 @@
-import {customFetch, loadCodes} from "/js/common.js";
-import hljs from "highlight.js";
+import { customFetch, loadCodes } from "/js/common.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 let totalPages = 1;
