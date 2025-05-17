@@ -1,27 +1,9 @@
 import hljs from "highlight.js";
 
-let elements = {};
-
 document.addEventListener("DOMContentLoaded", async () => {
-  elements = getElements();
   setupModalControls();
   await renderMainContent();
 });
-
-export const getElements = () => {
-  return {
-    loginModal: document.getElementById("login-modal"),
-    openLoginModalBtn: document.querySelector(".header-menu .login-btn"),
-    closeLoginModalBtn: document.querySelector(".modal-close-btn"),
-    loginForm: document.getElementById("login-form"),
-    signUpForm: document.getElementById("signup-form"),
-    createCodeBtn: document.querySelector(".create-code-btn"),
-    userNameDisplay: document.querySelector(".user-name-text"),
-    userNameBox: document.querySelector(".user-name"),
-    loginBtn: document.querySelector(".login-btn"),
-    logoutBtn: document.querySelector(".logout-btn"),
-  };
-};
 
 export const customFetch = async (
   url,
@@ -82,7 +64,6 @@ export const handleLogout = async () => {
 export const renderMainContent = async () => {
   try {
     const accessToken = getCookie("accessToken");
-
     let currentUsername = getCookie("currentUsername");
 
     if (currentUsername) setStatusLoggedIn(currentUsername);
@@ -110,51 +91,53 @@ export const renderMainContent = async () => {
 };
 
 const setStatusLoggedOut = () => {
-  elements.createCodeBtn.classList.add("hidden");
-  elements.userNameBox.classList.add("hidden");
-  elements.userNameDisplay.textContent = "";
-  elements.loginBtn.classList.remove("hidden");
-  elements.logoutBtn.classList.add("hidden");
+  document.querySelector(".create-code-btn")?.classList.add("hidden");
+  document.querySelector(".user-name")?.classList.add("hidden");
+  const userNameDisplay = document.querySelector(".user-name-text");
+  if (userNameDisplay) userNameDisplay.textContent = "";
+  document.querySelector(".login-btn")?.classList.remove("hidden");
+  document.querySelector(".logout-btn")?.classList.add("hidden");
 };
 
 const setStatusLoggedIn = (currentUsername) => {
-  elements.createCodeBtn.classList.remove("hidden");
-  elements.userNameDisplay.textContent = `${currentUsername}님`;
-  elements.userNameBox.classList.remove("hidden");
-  elements.loginBtn.classList.add("hidden");
-  elements.logoutBtn.classList.remove("hidden");
-  elements.loginModal.classList.add("hidden"); // 로그인 모달 닫기
+  document.querySelector(".create-code-btn")?.classList.remove("hidden");
+  const userNameDisplay = document.querySelector(".user-name-text");
+  if (userNameDisplay) userNameDisplay.textContent = `${currentUsername}님`;
+  document.querySelector(".user-name")?.classList.remove("hidden");
+  document.querySelector(".login-btn")?.classList.add("hidden");
+  document.querySelector(".logout-btn")?.classList.remove("hidden");
+  document.getElementById("login-modal")?.classList.add("hidden");
 };
 
 export const setupModalControls = () => {
-  if (elements.openLoginModalBtn) {
-    elements.openLoginModalBtn.addEventListener("click", () => {
-      elements.loginModal.classList.remove("hidden"); // 모달 열기
-    });
-  }
+  const loginModal = document.getElementById("login-modal");
+  const openLoginModalBtn = document.querySelector(".header-menu .login-btn");
+  const closeLoginModalBtn = document.querySelector(".modal-close-btn");
 
-  elements.closeLoginModalBtn.addEventListener("click", () => {
-    elements.loginModal.classList.add("hidden"); // 모달 닫기
+  openLoginModalBtn?.addEventListener("click", () => {
+    loginModal?.classList.remove("hidden");
   });
 
-  elements.loginModal.addEventListener("click", (event) => {
-    // 모달 외부 클릭 시 닫기
-    if (event.target === elements.loginModal) {
-      elements.loginModal.classList.add("hidden");
+  closeLoginModalBtn?.addEventListener("click", () => {
+    loginModal?.classList.add("hidden");
+  });
+
+  loginModal?.addEventListener("click", (event) => {
+    if (event.target === loginModal) {
+      loginModal.classList.add("hidden");
     }
   });
 
   document.addEventListener("keydown", (event) => {
-    // ESC 키 입력 시 모달 닫기
     if (
       event.key === "Escape" &&
-      !elements.loginModal.classList.contains("hidden")
+      loginModal &&
+      !loginModal.classList.contains("hidden")
     ) {
-      elements.loginModal.classList.add("hidden");
+      loginModal.classList.add("hidden");
     }
   });
 };
-
 
 export const loadCodes = async () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -163,7 +146,9 @@ export const loadCodes = async () => {
   const classNo = urlParams.get("classNo") ?? "";
   const assignmentId = urlParams.get("assignmentId") ?? "";
   const list = document.getElementById("post-list-container");
-  const codes = await customFetch(`/codes?page=${page}&criteria=${criteria}&classNo=${classNo}&assignmentId=${assignmentId}`);
+  const codes = await customFetch(
+    `/codes?page=${page}&criteria=${criteria}&classNo=${classNo}&assignmentId=${assignmentId}`
+  );
 
   if (codes.ok && codes.data) {
     list.innerHTML = "";
@@ -171,8 +156,8 @@ export const loadCodes = async () => {
       const code = codes.data.codes[i];
       const article = document.createElement("article");
       const formattedStudentNumber = String(code.user.studentNumber).padStart(
-          2,
-          "0"
+        2,
+        "0"
       );
       article.className = "post-list-box";
       article.innerHTML = `
@@ -201,13 +186,13 @@ export const loadCodes = async () => {
     hljs.highlightAll();
     return codes.data.totalPages;
   }
-}
+};
 
 export function formatISOToKoreanDate(isoString) {
   const date = new Date(isoString);
 
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1); // 0부터 시작하므로 +1
+  const month = String(date.getMonth() + 1);
   const day = String(date.getDate());
 
   return `${year}년 ${month}월 ${day}일`;
