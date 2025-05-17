@@ -1,7 +1,7 @@
 import { customFetch, loadCodes } from "/js/common.js";
 
 const searchParams = new URLSearchParams(window.location.search);
-let sortValue = searchParams.get("criteria") ?? "";
+let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
 let assignmentValue = searchParams.get("assignmentId") ?? "";
 
