@@ -1,0 +1,283 @@
+body,
+html {
+  overflow-x: hidden;
+}
+.container {
+  display: flex;
+}
+#page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  margin: 0 auto;
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
+
+  .header-logo ul.logo {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .header-menu ul.menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    gap: 12px;
+  }
+
+  .create-code-btn {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  .user-name-text {
+    text-decoration: none;
+    color: black;
+  }
+
+  .login-btn {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  .logout-btn {
+    cursor: pointer;
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-height: 100vh;
+  .tab-menu {
+    padding: 0 60px 0 0;
+    width: 68vw;
+    align-items: flex-end;
+    justify-self: flex-end;
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 10px;
+      .tab-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 6px 8px 0;
+        text-decoration: none;
+        color: #495057;
+        font-weight: 600;
+        border-bottom: 3px solid transparent;
+        transition: color 0.2s ease, border-color 0.2s ease;
+
+        &:hover {
+          color: #0056b3;
+        }
+
+        &.active {
+          color: #007bff;
+          border-bottom-color: #007bff;
+        }
+      }
+      .tab-icon {
+        height: 1.8em;
+        width: auto;
+      }
+    }
+    .category {
+      text-align: center;
+      border-radius: 5px;
+      height: 5vh;
+      width: 10vh;
+    }
+  }
+
+  #main-content {
+    display: flex;
+    justify-content: flex-end;
+    #post-list-container {
+      width: 70vw;
+      .detail-page {
+        text-decoration: none;
+        p {
+          color: black;
+        }
+      }
+      display: grid;
+      gap: 40px;
+      padding: 12px 50px 50px 0;
+      grid-template-columns: repeat(auto-fill, 318px);
+      justify-content: center;
+      .post-list-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        width: 100%;
+        min-height: 380px;
+        background-color: white;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+
+        .code-text {
+          padding: 10px;
+          overflow-x: hidden;
+
+          pre {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+          }
+
+          code {
+            display: block;
+            height: 270px;
+            overflow: hidden;
+            white-space: pre-wrap;
+          }
+        }
+      }
+      .code-information {
+        display: flex;
+        padding: 5px 20px 0 15px;
+        border-top: 1px solid #e0e0e0;
+        justify-content: space-between;
+        gap: 10px;
+        .info-box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 2px;
+          margin: 0;
+          padding: 0;
+          p {
+            margin: 0;
+            padding: 0;
+          }
+          .title {
+            font-size: 1.15rem;
+            font-weight: 400;
+          }
+          .student-info {
+            font-size: 0.7rem;
+          }
+        }
+        .like-box {
+          display: flex;
+          gap: 4px;
+          #code-likes {
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+
+  #page-footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: auto;
+  }
+}
+.task-list-container {
+  width: 24vw;
+  margin: 0 auto;
+  padding: 20px 20px 0 20px;
+  text-align: center;
+  border-right: 1px solid #e0e0e0;
+  .task-list-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: inline-block;
+  }
+
+  .task-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      &.selected {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      .task-title {
+        font-size: 1.2rem;
+      }
+      .edit-icon {
+        width: 1rem;
+      }
+
+      .task-type {
+        font-size: 0.8rem;
+        color: gray;
+      }
+    }
+  }
+
+  .task-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    .task-button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: black;
+        border-color: white;
+        color: white;
+      }
+    }
+  }
+}
