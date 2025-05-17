@@ -22,7 +22,7 @@ main {
     align-items: center;
     font-size: 1.5rem;
     font-weight: 500;
-    border: 1px solid black;
+    border: 1px solid #a9a9a9;
     border-radius: 5px 5px 0 0;
     &:focus {
       outline: none;
@@ -100,11 +100,12 @@ main {
       }
       .assignment-select {
         border: 1px solid #d9d9d9;
-        border-radius: 3px;
+        border-radius: 5px;
         padding: 5px 10px;
         font-weight: 600;
         font-size: 13px;
         cursor: pointer;
+        background-color: rgba(0,0,0,0.02);
         &.selected {
           background-color: #0095ff;
           color: white;
