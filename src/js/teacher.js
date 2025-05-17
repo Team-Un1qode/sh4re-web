@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const categoryClass = document.querySelector(".category-class");
   const categorySort = document.querySelector(".category-sort");
   const createAssignment = document.querySelector(".create-assignment");
-  const deleteAssignment = document.querySelector(".delete-icon");
   try {
     const res = await customFetch(`/assignments`, {
       method: "GET",
