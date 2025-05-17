@@ -1,8 +1,11 @@
 import { customFetch, loadCodes } from "/js/common.js";
 
-const urlParams = new URLSearchParams(window.location.search);
+const searchParams = new URLSearchParams(window.location.search);
 let totalPages = 1;
-let page = +urlParams.get("page") ?? 1;
+let page = +searchParams.get("page") ?? 1;
+let sortValue = searchParams.get("criteria") ?? "createdAt";
+let classValue = searchParams.get("classNo") ?? "";
+let assignmentValue = searchParams.get("assignmentId") ?? "";
 
 const renderPages = () => {
   if(page < 1) page = 1;
@@ -21,7 +24,7 @@ const renderPages = () => {
     pageButton.innerText = i;
     pageButton.addEventListener("click", function () {
       page = +this.dataset.page;
-      window.location.href = `/?page=${page}`;
+      window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     })
     pageList.appendChild(pageButton);
   }
@@ -35,13 +38,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.querySelector(".prev-page").addEventListener("click", function () {
   if(page <= 1) return;
   page--;
-  window.location.href = `/?page=${page}`;
-  // renderPages();
+  window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
 })
 
 document.querySelector(".next-page").addEventListener("click", function () {
   if(page >= totalPages) return;
   page++;
-  window.location.href = `/?page=${page}`;
-  // renderPages();
+  window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
 })

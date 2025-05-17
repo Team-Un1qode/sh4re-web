@@ -158,11 +158,12 @@ export const setupModalControls = () => {
 
 export const loadCodes = async () => {
   const urlParams = new URLSearchParams(window.location.search);
+  const page = urlParams.get("page") ?? "1";
   const criteria = urlParams.get("criteria") ?? "";
   const classNo = urlParams.get("classNo") ?? "";
   const assignmentId = urlParams.get("assignmentId") ?? "";
   const list = document.getElementById("post-list-container");
-  const codes = await customFetch(`/codes?criteria=${criteria}&classNo=${classNo}&assignmentId=${assignmentId}`);
+  const codes = await customFetch(`/codes?page=${page}&criteria=${criteria}&classNo=${classNo}&assignmentId=${assignmentId}`);
 
   if (codes.ok && codes.data) {
     list.innerHTML = "";
