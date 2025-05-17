@@ -44,6 +44,10 @@ body {
     cursor: pointer;
     color: black;
 
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
     &:hover {
       background-color: black;
       color: white;
@@ -68,8 +72,24 @@ body {
       color: white;
     }
   }
+
   .logout-btn {
-    cursor: pointer;
+    svg {
+      display: none;
+      margin-left: 10px;
+      height: 1.5em;
+      width: auto;
+      fill: black;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 600px) {
+      div {
+        display: none;
+      }
+      svg {
+        display: block;
+      }
+    }
   }
 }
 
@@ -83,6 +103,11 @@ body {
     margin: 0;
     padding: 0;
     gap: 10px;
+    @media screen and (max-width: 600px) {
+      span {
+        display: none;
+      }
+    }
     .tab-button {
       display: flex;
       align-items: center;
@@ -117,6 +142,11 @@ body {
       border-radius: 5px;
       height: 3vh;
       width: 8vh;
+      &:not(:last-child){
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
+      }
     }
   }
 }

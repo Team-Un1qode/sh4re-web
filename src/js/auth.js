@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         setCookie("accessToken", refreshToken, 30);
         setCookie("currentUsername", username, 30);
         alert(`${username}님 환영합니다!`);
-        await renderMainContent();
+        window.location.reload();
       } else {
         console.error("응답 데이터가 예상과 다릅니다:", res);
         alert("로그인 중 문제가 발생했습니다.(else)");

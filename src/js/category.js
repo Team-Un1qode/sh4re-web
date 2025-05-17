@@ -1,4 +1,4 @@
-import { customFetch } from "/js/common.js";
+import { customFetch, loadCodes } from "/js/common.js";
 
 const searchParams = new URLSearchParams(window.location.search);
 let sortValue = searchParams.get("criteria") ?? "createdAt";
@@ -6,8 +6,8 @@ let classValue = searchParams.get("classNo") ?? "";
 let assignmentValue = searchParams.get("assignmentId") ?? "";
 const page = searchParams.get("page") ?? 1;
 
-const reloadCodes = () => {
-  loadCodes(sortValue, classValue, assignmentValue);
+const reloadCodes = async () => {
+  await loadCodes(sortValue, classValue, assignmentValue);
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       sortValue = this.value;
       window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
-    reloadCodes();
+    await reloadCodes();
   } catch (e) {
     console.error("API 요청 중 에러", e);
   }

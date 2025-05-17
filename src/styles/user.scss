@@ -6,6 +6,10 @@ main {
     flex-direction: column;
     margin: 0;
     padding: 20px 60px 20px;
+    #user-name {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.4);
+    }
     .school-name {
       font-size: 2rem;
     }

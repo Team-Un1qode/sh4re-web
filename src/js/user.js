@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await res.data;
     const formattedStudentNumber = String(data.studentNumber).padStart(2, "0");
     studentName.innerText = `${data.grade}${data.classNumber}${formattedStudentNumber}${data.name}`;
-    username.innerText = `${data.username}`;
+    username.innerText = `(${data.username})`;
 
     const codeList = await data.codeList;
     if (codeList) {
