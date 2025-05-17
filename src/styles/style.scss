@@ -187,6 +187,9 @@ body {
       .like-box {
         display: flex;
         gap: 4px;
+        #code-likes {
+          cursor: default;
+        }
       }
     }
   }
