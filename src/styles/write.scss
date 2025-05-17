@@ -24,6 +24,7 @@ main {
     padding: 10px 10px;
     border-color: #e0e0e0;
     box-sizing: border-box;
+    overflow: hidden;
     resize: none;
     &:focus {
       outline: none;
