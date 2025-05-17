@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("서버 응답", errorText);
     return;
   }
-  document.body.dataset.userId = res.data.id;
   const data = await res.data;
   userNameText.href = `/user?id=${data.id}`;
 });

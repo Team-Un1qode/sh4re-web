@@ -1,3 +1,4 @@
+import "/components/header/header.js";
 import {customFetch, formatISOToKoreanDate, getCookie} from "/js/common.js";
 import hljs from "/js/highlight.js";
 
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const topBox = document.querySelector(".top-box");
   const copyButton = document.querySelector(".copy");
   const deleteButton = document.querySelector(".delete");
+  const userNameText = document.querySelector(".user-name-text");
   let isCopied = false;
   let likeLoading = false;
 
@@ -34,9 +36,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
     const data = await res.data;
-    if(data.user.id == document.body.dataset.userId) {
-      deleteButton.classList.remove("hidden");
-    }
+    const username = userNameText.innerText;
+    if(data.user.username == username.slice(0, username.length-1)) deleteButton.classList.remove("hidden");
     const formattedStudentNumber = String(data.user.studentNumber).padStart(
       2,
       "0"
