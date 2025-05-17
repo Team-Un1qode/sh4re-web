@@ -22,10 +22,34 @@
           >
         </li>
       </ul>
-      <select name="category" id="category" class="category">
-        <option value="latest" selected>최신순</option>
-        <option value="popular">인기순</option>
-      </select>
+      <div class="category-box">
+        <select
+          name="category-assignment"
+          id="category-assignment"
+          class="category category-assignment"
+        >
+          <option value="all" selected>과제</option>
+        </select>
+        <select
+          name="category-class"
+          id="category-class"
+          class="category category-class"
+        >
+          <option value="all" selected>반</option>
+          <option value="1">1-1</option>
+          <option value="2">1-2</option>
+          <option value="3">1-3</option>
+          <option value="4">1-4</option>
+        </select>
+        <select
+          name="category-sort"
+          id="category-sort"
+          class="category category-sort"
+        >
+          <option value="latest" selected>최신순</option>
+          <option value="popular">인기순</option>
+        </select>
+      </div>
     </nav>
     <main id="main-content">
       <div id="post-list-container"></div>
