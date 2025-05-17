@@ -1,7 +1,7 @@
-import {customFetch} from "/js/common.js";
+import { customFetch } from "/js/common.js";
 
 const searchParams = new URLSearchParams(window.location.search);
-let sortValue = searchParams.get("criteria") ?? "";
+let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
 let assignmentValue = searchParams.get("assignmentId") ?? "";
 
@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
     const data = await res.data;
+    if (categoryAssignment) categoryAssignment.value = assignmentValue;
+    if (categoryClass) categoryClass.value = classValue;
+    if (categorySort) categorySort.value = sortValue;
     for (let i = 0; i < data.assignments.length; i++) {
       const assignment = data.assignments[i];
       const option = document.createElement("option");
