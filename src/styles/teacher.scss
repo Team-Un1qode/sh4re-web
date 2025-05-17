@@ -252,8 +252,12 @@ body {
           .task-type {
             color: white;
           }
-          .edit-icon {
+          .edit-icon,
+          .delete-icon {
             fill: rgb(181, 181, 181);
+          }
+          .edit-icon:hover {
+            fill: rgb(66, 66, 66);
           }
         }
       }
@@ -274,6 +278,16 @@ body {
         .edit-icon {
           width: 20px;
           fill: rgb(66, 66, 66);
+          &:hover {
+            fill: rgb(20, 20, 20);
+          }
+        }
+        .delete-icon {
+          width: 17px;
+          fill: rgb(66, 66, 66);
+          &:hover {
+            fill: rgb(221, 2, 2);
+          }
         }
       }
     }
