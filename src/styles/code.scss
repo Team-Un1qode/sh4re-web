@@ -128,7 +128,7 @@ main {
         align-items: center;
         gap: 5px;
         #like-icon {
-          height: fit-content;
+          height: 20px;
           width: 20px;
           padding: 10px;
           border-radius: 50%;
@@ -178,6 +178,18 @@ main {
           height: 1.3rem;
           fill: white;
         }
+      }
+      .delete {
+        height: 40px;
+        width: 80px;
+        background-color: #ee3333;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
