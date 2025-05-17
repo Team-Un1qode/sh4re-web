@@ -260,7 +260,7 @@ body {
         border: 2px solid $blue;
         .detail {
           .edit-icon:hover {
-            fill: #ffc107;
+            fill: $blue;
           }
         }
       }
@@ -279,6 +279,7 @@ body {
           color: gray;
         }
         .edit-icon {
+          min-width: 20px;
           width: 20px;
           fill: rgb(66, 66, 66);
           &:hover {
@@ -286,6 +287,7 @@ body {
           }
         }
         .delete-icon {
+          min-width: 17px;
           width: 17px;
           fill: rgb(66, 66, 66);
           &:hover {
