@@ -246,7 +246,16 @@ body {
       }
 
       &.selected {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: #007bff;
+        color: white;
+        .detail {
+          .task-type {
+            color: white;
+          }
+          .edit-icon {
+            fill: rgb(181, 181, 181);
+          }
+        }
       }
 
       .task-title {
