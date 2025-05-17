@@ -1,0 +1,97 @@
+main {
+  display: flex;
+  flex-direction: column;
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 20px 60px 20px;
+    .school-name {
+      font-size: 2rem;
+    }
+  }
+  .bar {
+    align-self: center;
+    width: 95%;
+    height: 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .written-code-box {
+    .written-code-text {
+      font-size: 1.5rem;
+      padding: 20px 60px 20px;
+    }
+  }
+}
+#post-list-container {
+  .detail-page {
+    text-decoration: none;
+    p {
+      color: black;
+    }
+  }
+  display: grid;
+  gap: 40px;
+  padding: 12px 50px 50px;
+  grid-template-columns: repeat(auto-fill, 318px);
+  justify-content: center;
+  .post-list-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+    min-height: 380px;
+    background-color: white;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+
+    .code-text {
+      padding: 10px;
+      overflow-x: hidden;
+
+      pre {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      code {
+        display: block;
+        height: 270px;
+        overflow: hidden;
+        white-space: pre-wrap;
+      }
+    }
+  }
+  .code-information {
+    display: flex;
+    padding: 5px 20px 0 15px;
+    border-top: 1px solid #e0e0e0;
+    justify-content: space-between;
+    gap: 10px;
+    .info-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      margin: 0;
+      padding: 0;
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      .title {
+        font-size: 1.15rem;
+        font-weight: 400;
+      }
+      .student-info {
+        font-size: 0.7rem;
+      }
+    }
+    .like-box {
+      display: flex;
+      gap: 4px;
+    }
+  }
+}
