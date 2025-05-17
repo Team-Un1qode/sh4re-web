@@ -4,6 +4,11 @@ const searchParams = new URLSearchParams(window.location.search);
 let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
 let assignmentValue = searchParams.get("assignmentId") ?? "";
+const page = searchParams.get("page") ?? 1;
+
+const reloadCodes = () => {
+  loadCodes(sortValue, classValue, assignmentValue);
+};
 
 const reloadCodes = () => {
   loadCodes(sortValue, classValue, assignmentValue);
@@ -38,15 +43,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (categoryAssignment) categoryAssignment.value = assignmentValue;
     categoryAssignment.addEventListener("change", function () {
       assignmentValue = this.value;
-      window.location.href = `/?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
+      window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
     categoryClass.addEventListener("change", function () {
       classValue = this.value;
-      window.location.href = `/?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
+      window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
     categorySort.addEventListener("change", function () {
       sortValue = this.value;
-      window.location.href = `/?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
+      window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
     reloadCodes();
   } catch (e) {
