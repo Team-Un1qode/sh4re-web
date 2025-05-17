@@ -87,11 +87,15 @@ main {
       }
       .student-info {
         font-size: 0.7rem;
+        cursor: default;
       }
     }
     .like-box {
       display: flex;
       gap: 4px;
+      #code-likes {
+        cursor: default;
+      }
     }
   }
 }
