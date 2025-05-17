@@ -52,6 +52,7 @@ main {
     height: 100%;
     padding: 15px;
     border: 1px solid #e0e0e0;
+    box-sizing: border-box;
     .top-box {
       display: flex;
       flex-direction: column;
@@ -91,18 +92,29 @@ main {
     }
     .bottom-box {
       display: flex;
-      gap: 20px;
+      align-items: center;
+      gap: 15px;
       .like-box {
         display: flex;
+        align-items: center;
         gap: 5px;
         #like-icon {
-          width: 25px;
+          height: fit-content;
+          width: 20px;
+          padding: 10px;
+          border-radius: 50%;
+          border: 1px solid #d9d9d9;
+          cursor: pointer;
+          &.liked {
+            fill: white;
+            background-color: #007bff;
+            border: none;
+          }
         }
       }
       .copy {
         height: 40px;
         width: 40vw;
-        margin-bottom: 15px;
         background-color: $main-bg-color;
         color: white;
         border-radius: 5px;
