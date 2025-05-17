@@ -3,7 +3,8 @@ import { customFetch, loadCodes } from "/js/common.js";
 const searchParams = new URLSearchParams(window.location.search);
 let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
-let assignmentValue = +searchParams.get("assignmentId") ?? "";
+let assignmentValueRaw = searchParams.get("assignmentId");
+let assignmentValue = assignmentValueRaw === null ? "" : assignmentValueRaw;
 
 loadCodes(sortValue, classValue, assignmentValue);
 
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   ) {
     alert("선생님만 접근 가능한 페이지입니다.");
     window.location.href = "/";
+    return;
   }
 
   const taskList = document.querySelector(".task-list");
@@ -23,26 +25,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   const categorySort = document.querySelector(".category-sort");
   const createAssignment = document.querySelector(".create-assignment");
   try {
-    const res = await customFetch(`/assignments`, {
-      method: "GET",
-    });
+    const res = await customFetch(`/assignments`, { method: "GET" });
     if (!res.ok) {
       console.error("HTTP 상태", res.status);
-      const errorText = await res.text();
-      console.error("서버 응답", errorText);
       return;
     }
-    const data = await res.data;
+    const data = res.data;
     if (categoryClass) categoryClass.value = classValue;
     if (categorySort) categorySort.value = sortValue;
-    for (let i = 0; i < data.assignments.length; i++) {
-      const assignment = data.assignments[i];
-      const option = document.createElement("li");
 
+    data.assignments.forEach((assignment) => {
+      const option = document.createElement("li");
       option.classList.add("task-item");
       option.setAttribute("data-id", assignment.id);
 
-      if (assignment.id === assignmentValue) {
+      if (assignment.id == assignmentValue) {
         option.classList.add("selected");
       }
 
@@ -59,15 +56,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (e.target.closest(".edit-icon") || e.target.closest(".delete-icon"))
           return;
         if (assignmentValue == this.dataset.id) {
-          assignmentValue = null;
+          assignmentValue = "";
         } else {
           assignmentValue = this.dataset.id;
         }
-        window.location.href = `${
-          window.location.pathname
-        }?criteria=${sortValue}&classNo=${classValue}&assignmentId=${
-          assignmentValue ?? ""
-        }`;
+        window.location.href = `${window.location.pathname}?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
       });
 
       option
@@ -108,26 +101,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
       taskList.appendChild(option);
-    }
-    categoryClass.addEventListener("change", function () {
+    });
+
+    categoryClass?.addEventListener("change", function () {
       classValue = this.value;
       window.location.href = `${window.location.pathname}?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
-    categorySort.addEventListener("change", function () {
+
+    categorySort?.addEventListener("change", function () {
       sortValue = this.value;
       window.location.href = `${window.location.pathname}?criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
     });
-    createAssignment.addEventListener("click", async function () {
-      const Title = prompt("과제 제목을 입력해주세요.");
-      if (Title === null) return;
-      const Desc = prompt("설명을 입력해주세요.");
-      if (Desc === null) return;
+
+    createAssignment?.addEventListener("click", async function () {
+      const title = prompt("제목을 입력해주세요.");
+      if (title === null) return;
+      const desc = prompt("설명을 입력해주세요.");
+      if (desc === null) return;
 
       await customFetch(`/assignments`, {
         method: "POST",
         body: {
-          title: Title,
-          description: Desc,
+          title,
+          description: desc,
         },
       });
       location.reload();
