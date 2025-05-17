@@ -1,7 +1,8 @@
 import headerHTML from "./header.html?raw";
-import { customFetch } from "/js/common.js";
+import {customFetch, getCookie} from "/js/common.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  if(getCookie("accessToken") == "") return;
   const userNameText = document.querySelector(".user-name-text");
   const res = await customFetch(`/api/auth/info`, {
     method: "GET",
