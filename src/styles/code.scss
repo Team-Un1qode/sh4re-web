@@ -1,4 +1,5 @@
 @import url(./style.scss);
+
 $main-color: #007bff;
 $main-bg-color: #0095ff;
 
@@ -9,17 +10,21 @@ main {
   height: 90%;
   padding: 20px;
   box-sizing: border-box;
+
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
     grid-template-rows: 20rem 1fr;
   }
+
   .code-box {
     flex-grow: 1;
     height: 100%;
     box-sizing: border-box;
     resize: none;
+
     .code-text {
       height: 100%;
+
       pre {
         position: relative;
         overflow: hidden;
@@ -35,10 +40,12 @@ main {
           height: 100%;
           font-size: 1.5vw;
           white-space: pre-wrap;
+
           @media screen and (max-width: 768px) {
             font-size: 0.8rem;
           }
         }
+
         #full-screen-icon {
           fill: #d9d9d9;
           position: absolute;
@@ -46,13 +53,15 @@ main {
           bottom: 10px;
           right: 10px;
           cursor: pointer;
+
           @media screen and (max-width: 768px) {
-            display: none ;
+            display: none;
           }
         }
       }
     }
   }
+
   .detail-box {
     display: flex;
     flex-direction: column;
@@ -61,34 +70,41 @@ main {
     padding: 15px;
     border: 1px solid #e0e0e0;
     box-sizing: border-box;
+
     .top-box {
       display: flex;
       flex-direction: column;
+
       .code-info {
         display: flex;
         justify-content: space-between;
         padding-bottom: 10px;
         border-bottom: 1px solid #e0e0e0;
       }
+
       .title {
         font-size: 2rem;
         font-weight: 500;
       }
+
       #createdAt {
         font-size: 14px;
         color: rgba(0, 0, 0, 0.4);
       }
+
       .user-info {
         cursor: pointer;
         color: black;
         text-decoration: none;
         display: flex;
         align-items: center;
+
         .user-page {
           text-decoration: none;
           color: black;
         }
       }
+
       .description {
         overflow-x: auto;
         max-height: 200px;
@@ -100,6 +116,7 @@ main {
         padding: 10px;
         box-sizing: border-box;
         min-height: 100px;
+
         #watermark {
           display: flex;
           align-items: center;
@@ -109,6 +126,7 @@ main {
           margin-bottom: 0;
           color: rgba(0, 0, 0, 0.35);
           font-size: 14px;
+
           #generate-by-gpt {
             margin: 0;
           }
@@ -119,14 +137,17 @@ main {
         }
       }
     }
+
     .bottom-box {
       display: flex;
       align-items: center;
       gap: 15px;
+
       .like-box {
         display: flex;
         align-items: center;
         gap: 5px;
+
         #like-icon {
           height: 20px;
           width: 20px;
@@ -134,34 +155,37 @@ main {
           border-radius: 50%;
           border: 1px solid #d9d9d9;
           cursor: pointer;
+
           &.liked {
-            fill: white;
-            background-color: #007bff;
+            fill: #fff;
+            background-color: $main-color;
             border-color: transparent;
           }
         }
       }
+
       @keyframes copied {
         0% {
-          background-color: #0095ff;
+          background-color: $main-bg-color;
           transform: rotate(0deg);
         }
         80% {
           transform: rotate(-3deg);
         }
         95% {
-          background-color: #007bff;
+          background-color: $main-color;
           transform: rotate(1deg);
         }
         100% {
           transform: rotate(0deg);
         }
       }
+
       .copy {
         height: 40px;
         width: 100%;
         background-color: $main-bg-color;
-        color: white;
+        color: #fff;
         border-radius: 5px;
         border: none;
         cursor: pointer;
@@ -170,20 +194,23 @@ main {
         justify-content: center;
         font-size: 0.9rem;
         font-weight: 700;
+
         &.copied {
           animation: copied 0.4s ease-in-out;
         }
+
         svg {
           width: 1.3rem;
           height: 1.3rem;
-          fill: white;
+          fill: #fff;
         }
       }
+
       .delete {
         height: 40px;
         width: 80px;
         background-color: #ee3333;
-        color: white;
+        color: #fff;
         border-radius: 5px;
         border: none;
         cursor: pointer;

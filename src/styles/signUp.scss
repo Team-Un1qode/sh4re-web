@@ -1,3 +1,9 @@
+$blue: #007bff;
+$blue-hover: #0056b3;
+$modal-bg: #ffffff;
+$modal-btn-bg: #0095ff;
+$modal-link: #495057;
+
 .hidden-signup {
   display: none !important;
 }
@@ -27,7 +33,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: #ffffff;
+  background-color: $modal-bg;
   padding: 30px 40px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -90,7 +96,7 @@
       font-size: 1em;
 
       &:focus {
-        border-color: #007bff;
+        border-color: $blue;
         outline: none;
         box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
       }
@@ -115,8 +121,8 @@
     margin-top: 30px;
     width: 100%;
     padding: 16px;
-    background-color: #0095ff;
-    color: white;
+    background-color: $modal-btn-bg;
+    color: #fff;
     border: none;
     border-radius: 8px;
     font-size: 1.1em;
@@ -125,7 +131,7 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: $blue-hover;
     }
   }
 
@@ -135,7 +141,7 @@
     font-size: 0.9em;
 
     a {
-      color: #495057;
+      color: $modal-link;
       text-decoration: none;
       cursor: pointer;
 
