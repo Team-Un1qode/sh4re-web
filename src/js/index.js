@@ -1,4 +1,4 @@
-import { customFetch, loadCodes } from "/js/common.js";
+import { loadCodes } from "/js/common.js";
 
 const searchParams = new URLSearchParams(window.location.search);
 let totalPages = 1;
@@ -8,15 +8,15 @@ let classValue = searchParams.get("classNo") ?? "";
 let assignmentValue = searchParams.get("assignmentId") ?? "";
 
 const renderPages = () => {
-  if(page < 1) page = 1;
-  const weight = Math.floor((page-1) / 5);
+  if (page < 1) page = 1;
+  const weight = Math.floor((page - 1) / 5);
   const start = weight * 5 + 1;
   const pageList = document.querySelector(".page-list");
   pageList.innerHTML = "";
-  for(let i = start; i < start + 5; i++){
-    if(i > totalPages) break;
+  for (let i = start; i < start + 5; i++) {
+    if (i > totalPages) break;
     const pageButton = document.createElement("button");
-    if(i === page) {
+    if (i === page) {
       pageButton.classList.add("active");
     }
     pageButton.classList.add("page-button");
@@ -25,10 +25,10 @@ const renderPages = () => {
     pageButton.addEventListener("click", function () {
       page = +this.dataset.page;
       window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
-    })
+    });
     pageList.appendChild(pageButton);
   }
-}
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
   totalPages = await loadCodes();
@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 document.querySelector(".prev-page").addEventListener("click", function () {
-  if(page <= 1) return;
+  if (page <= 1) return;
   page--;
   window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
-})
+});
 
 document.querySelector(".next-page").addEventListener("click", function () {
-  if(page >= totalPages) return;
+  if (page >= totalPages) return;
   page++;
   window.location.href = `/?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
-})
+});
