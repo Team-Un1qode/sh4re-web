@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Pen+Script&display=swap");
 
+$blue: #007bff;
+$blue-hover: #0056b3;
+$gray-border: #e0e0e0;
+$gray-tab: #495057;
+
 body,
 html {
   overflow-x: hidden;
 }
+
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -11,6 +17,7 @@ body {
   height: 100vh;
   max-height: 100vh;
 }
+
 #page-header {
   display: flex;
   justify-content: space-between;
@@ -18,13 +25,13 @@ body {
   padding: 0 60px;
   margin: 0 auto;
   height: 60px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  box-sizing: border-box; // padding, border가 width/height에 포함되도록
+  background-color: #fff;
+  border-bottom: 1px solid $gray-border;
+  box-sizing: border-box;
 
   .header-logo ul.logo {
     list-style: none;
-    padding-left: 0; // 기본 list 왼쪽 여백 제거
+    padding-left: 0;
   }
 
   .header-menu ul.menu {
@@ -37,39 +44,39 @@ body {
   }
 
   .create-code-btn {
-    background-color: white;
-    border: 1px solid black;
+    background-color: #fff;
+    border: 1px solid #000;
     border-radius: 25px;
     padding: 5px 15px;
     cursor: pointer;
-    color: black;
+    color: #000;
 
     @media screen and (max-width: 600px) {
       display: none;
     }
 
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: #000;
+      color: #fff;
     }
   }
 
   .user-name-text {
     text-decoration: none;
-    color: black;
+    color: #000;
   }
 
   .login-btn {
-    background-color: white;
-    border: 1px solid black;
+    background-color: #fff;
+    border: 1px solid #000;
     border-radius: 25px;
     padding: 5px 15px;
     cursor: pointer;
-    color: black;
+    color: #000;
 
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: #000;
+      color: #fff;
     }
   }
 
@@ -80,7 +87,7 @@ body {
       margin-left: 10px;
       height: 1.5em;
       width: auto;
-      fill: black;
+      fill: #000;
     }
     @media screen and (max-width: 600px) {
       div {
@@ -114,18 +121,18 @@ body {
       gap: 8px;
       padding: 12px 6px 8px 0;
       text-decoration: none;
-      color: #495057;
+      color: $gray-tab;
       font-weight: 600;
       border-bottom: 3px solid transparent;
       transition: color 0.2s ease, border-color 0.2s ease;
 
       &:hover {
-        color: #0056b3;
+        color: $blue-hover;
       }
 
       &.active {
-        color: #007bff;
-        border-bottom-color: #007bff;
+        color: $blue;
+        border-bottom-color: $blue;
       }
     }
     .tab-icon {
@@ -142,7 +149,7 @@ body {
       border-radius: 5px;
       height: 3vh;
       width: 8vh;
-      &:not(:last-child){
+      &:not(:last-child) {
         @media screen and (max-width: 600px) {
           display: none;
         }
@@ -156,7 +163,7 @@ body {
     .detail-page {
       text-decoration: none;
       p {
-        color: black;
+        color: #000;
       }
     }
     display: grid;
@@ -171,7 +178,7 @@ body {
       overflow: hidden;
       width: 100%;
       min-height: 380px;
-      background-color: white;
+      background-color: #fff;
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
       border-radius: 5px;
 
@@ -196,7 +203,7 @@ body {
     .code-information {
       display: flex;
       padding: 5px 20px 0 15px;
-      border-top: 1px solid #e0e0e0;
+      border-top: 1px solid $gray-border;
       justify-content: space-between;
       gap: 10px;
       .info-box {
@@ -250,17 +257,17 @@ body {
   svg {
     height: 1.5rem;
     width: 1.5rem;
-    fill: #333;
+    fill: #000;
   }
   .page-button.active {
-    border-color: #007bff;
+    border-color: $blue;
     border-width: 1.5px;
   }
   .page-button {
     padding: 5px 8px;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
-    background-color: white;
+    background-color: #fff;
     cursor: pointer;
     min-width: 2.5rem;
     font-size: 16px;

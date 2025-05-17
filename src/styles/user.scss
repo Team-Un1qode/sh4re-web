@@ -1,25 +1,31 @@
+$gray-border: #e0e0e0;
+
 main {
   display: flex;
   flex-direction: column;
+
   .user-info {
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 20px 60px 20px;
+
     #user-name {
       font-size: 1rem;
-      color: rgba(0,0,0,0.4);
+      color: rgba(0, 0, 0, 0.4);
     }
     .school-name {
       font-size: 2rem;
     }
   }
+
   .bar {
     align-self: center;
     width: 95%;
     height: 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $gray-border;
   }
+
   .written-code-box {
     .written-code-text {
       font-size: 1.5rem;
@@ -27,11 +33,12 @@ main {
     }
   }
 }
+
 #post-list-container {
   .detail-page {
     text-decoration: none;
     p {
-      color: black;
+      color: #000;
     }
   }
   display: grid;
@@ -39,6 +46,7 @@ main {
   padding: 12px 50px 50px;
   grid-template-columns: repeat(auto-fill, 318px);
   justify-content: center;
+
   .post-list-box {
     display: flex;
     flex-direction: column;
@@ -46,7 +54,7 @@ main {
     overflow: hidden;
     width: 100%;
     min-height: 380px;
-    background-color: white;
+    background-color: #fff;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 
@@ -68,12 +76,14 @@ main {
       }
     }
   }
+
   .code-information {
     display: flex;
     padding: 5px 20px 0 15px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid $gray-border;
     justify-content: space-between;
     gap: 10px;
+
     .info-box {
       display: flex;
       flex-direction: column;
@@ -94,6 +104,7 @@ main {
         cursor: default;
       }
     }
+
     .like-box {
       display: flex;
       gap: 4px;
