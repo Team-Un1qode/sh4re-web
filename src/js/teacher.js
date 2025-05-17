@@ -3,11 +3,9 @@ import { customFetch, loadCodes } from "/js/common.js";
 const searchParams = new URLSearchParams(window.location.search);
 let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
-let assignmentValue = searchParams.get("assignmentId") ?? "";
+let assignmentValue = +searchParams.get("assignmentId") ?? "";
 
-const reloadCodes = () => {
-  loadCodes(sortValue, classValue, assignmentValue);
-};
+loadCodes(sortValue, classValue, assignmentValue);
 
 document.addEventListener("DOMContentLoaded", async () => {
   const taskList = document.querySelector(".task-list");
@@ -34,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       option.classList.add("task-item");
       option.setAttribute("data-id", assignment.id);
 
-      if (assignment.id == assignmentValue) {
+      if (assignment.id === assignmentValue) {
         option.classList.add("selected");
       }
 
@@ -82,8 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               description: newDesc,
             },
           });
-          location.reload(true);
-          reloadCodes();
+          location.reload();
         });
 
       option
@@ -97,8 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               id: assignment.id,
             },
           });
-          location.reload(true);
-          reloadCodes();
+          location.reload();
         });
 
       taskList.appendChild(option);
@@ -124,8 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           description: Desc,
         },
       });
-      location.reload(true);
-      reloadCodes();
+      location.reload();
     });
   } catch (e) {
     console.error("API 요청 중 에러", e);

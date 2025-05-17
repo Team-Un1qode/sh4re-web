@@ -75,8 +75,8 @@ export function getCookie(cname) {
 export const handleLogout = async () => {
   setCookie("accessToken", "", -1);
   setCookie("currentUsername", "", -1);
-  await renderMainContent();
   alert("로그아웃되었습니다.");
+  window.location.reload();
 };
 
 export const renderMainContent = async () => {
@@ -201,4 +201,14 @@ export const loadCodes = async () => {
     hljs.highlightAll();
     return codes.data.totalPages;
   }
+}
+
+export function formatISOToKoreanDate(isoString) {
+  const date = new Date(isoString);
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1); // 0부터 시작하므로 +1
+  const day = String(date.getDate());
+
+  return `${year}년 ${month}월 ${day}일`;
 }
