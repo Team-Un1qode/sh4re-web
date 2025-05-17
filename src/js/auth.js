@@ -1,9 +1,11 @@
-import { getElements, handleLogout, setCookie } from "./common";
+import { handleLogout, setCookie } from "/js/common";
 import { customFetch } from "/js/common.js";
-import "./status.js";
+import "/js/status.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const elements = getElements();
+  const logInForm = document.querySelector(".login-form");
+  const signUpForm = document.querySelector(".signup-form");
+  const logOutBtn = document.querySelector(".logout-btn");
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const { refreshToken } = res.data;
         setCookie("accessToken", refreshToken, 30);
         setCookie("currentUsername", username, 30);
-        alert(`${username}님 환영합니다!`);
         window.location.reload();
       } else {
         console.error("응답 데이터가 예상과 다릅니다:", res);
@@ -42,15 +43,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const username = event.target.username.value;
     const name = event.target.name.value;
     const password = event.target.password.value;
-    const grade = parseInt(event.target.grade.value);
-    const classNumber = parseInt(event.target.classNumber.value);
-    const studentNumber = parseInt(event.target.studentNumber.value);
+    const grade = +event.target.grade.value;
+    const classNumber = +event.target.classNumber.value;
+    const studentNumber = +event.target.studentNumber.value;
 
     try {
       const res = await customFetch("/api/auth/signup", {
         method: "POST",
         body: {
-          username: username,
+          username,
           name,
           password,
           grade,
@@ -60,7 +61,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       if (!res.error) {
-        alert("성공적으로 회원가입이 완료되었습니다!");
+        alert(`환영합니다 ${username}님!`);
+        const signUpLogIn = await customFetch("/api/auth/signin", {
+          method: "POST",
+          body: { username, password },
+        });
+
+        const { refreshToken } = signUpLogIn.data;
+        setCookie("accessToken", refreshToken, 30);
+        setCookie("currentUsername", username, 30);
         window.location.reload();
       } else {
         alert("회원가입 중 에러가 발생했습니다. 잠시 후 다시 시도해주세요.");
@@ -71,11 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  const initialize = () => {
-    elements.loginForm.addEventListener("submit", handleLoginSubmit);
-    elements.signUpForm.addEventListener("submit", handleSignUpSubmit);
-    elements.logoutBtn.addEventListener("click", handleLogout);
-  };
-
-  initialize();
+  logInForm.addEventListener("submit", handleLoginSubmit);
+  signUpForm.addEventListener("submit", handleSignUpSubmit);
+  logOutBtn.addEventListener("click", handleLogout);
 });
