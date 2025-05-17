@@ -10,6 +10,16 @@ const reloadCodes = () => {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const user = await customFetch(`/api/auth/info`, { method: "GET" });
+  if (
+    !user.ok ||
+    user.code === "INVALID_TOKEN" ||
+    user.data?.role !== "TEACHER"
+  ) {
+    alert("선생님만 접근 가능한 페이지입니다.");
+    window.location.href = "/";
+  }
+
   const taskList = document.querySelector(".task-list");
   const categoryClass = document.querySelector(".category-class");
   const categorySort = document.querySelector(".category-sort");
