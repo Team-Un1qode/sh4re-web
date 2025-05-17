@@ -156,7 +156,11 @@ export const setupModalControls = () => {
 };
 
 
-export const loadCodes = async (criteria = "createdAt", classNo = "", assignmentId= "") => {
+export const loadCodes = async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const criteria = urlParams.get("criteria") ?? "";
+  const classNo = urlParams.get("classNo") ?? "";
+  const assignmentId = urlParams.get("assignmentId") ?? "";
   const list = document.getElementById("post-list-container");
   const codes = await customFetch(`/codes?criteria=${criteria}&classNo=${classNo}&assignmentId=${assignmentId}`);
 
@@ -194,5 +198,6 @@ export const loadCodes = async (criteria = "createdAt", classNo = "", assignment
       list.appendChild(article);
     }
     hljs.highlightAll();
+    return codes.data.totalPages;
   }
 }
