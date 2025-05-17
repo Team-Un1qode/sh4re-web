@@ -108,7 +108,7 @@ main {
           &.liked {
             fill: white;
             background-color: #007bff;
-            border: none;
+            border-color: transparent;
           }
         }
       }
