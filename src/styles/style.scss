@@ -74,13 +74,13 @@ body {
   }
 
   .logout-btn {
+    cursor: pointer;
     svg {
       display: none;
       margin-left: 10px;
       height: 1.5em;
       width: auto;
       fill: black;
-      cursor: pointer;
     }
     @media screen and (max-width: 600px) {
       div {
