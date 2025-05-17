@@ -1,4 +1,3 @@
-import "/components/header/header.js";
 import {customFetch, formatISOToKoreanDate, getCookie} from "/js/common.js";
 import hljs from "/js/highlight.js";
 
