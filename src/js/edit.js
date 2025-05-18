@@ -1,4 +1,5 @@
 import { customFetch, getCookie, escapeHTML } from "/js/common.js";
+import "/styles/write.scss";
 import hljs from "/js/highlight.js";
 
 if (!getCookie("accessToken")) {

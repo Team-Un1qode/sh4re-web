@@ -1,4 +1,5 @@
 import { customFetch } from "/js/common.js";
+import "/styles/user.scss"
 import hljs from "/js/highlight.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
