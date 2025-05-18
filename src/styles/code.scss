@@ -235,4 +235,16 @@ main {
       }
     }
   }
+  .comment-box {
+    display: flex;
+    flex-direction: column;
+    height: 200px ;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    overflow: auto;
+    .comment-list {
+      list-style: none;
+    }
+  }
 }

@@ -127,3 +127,6 @@ codeInput.addEventListener("input", (e) => {
   code.dataset.highlighted = "";
   hljs.highlightElement(code);
 })
+codeInput.addEventListener("scroll", (e) => {
+  code.scrollTop = e.target.scrollTop;
+})
