@@ -107,7 +107,7 @@ main {
 
       .description {
         overflow-x: auto;
-        max-height: 200px;
+        max-height: 300px;
         margin-top: 20px;
         display: flex;
         flex-direction: column;
@@ -116,6 +116,9 @@ main {
         padding: 10px;
         box-sizing: border-box;
         min-height: 100px;
+        @media screen and (max-width: 768px) {
+          max-height: 200px;
+        }
 
         #watermark {
           display: flex;
