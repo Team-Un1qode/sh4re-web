@@ -1,4 +1,5 @@
 import { customFetch, loadCodes } from "/js/common.js";
+import "/styles/teacher.scss";
 
 const searchParams = new URLSearchParams(window.location.search);
 let sortValue = searchParams.get("criteria") ?? "createdAt";

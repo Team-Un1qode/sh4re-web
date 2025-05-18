@@ -1,4 +1,5 @@
 import { customFetch, formatISOToKoreanDate, getCookie } from "/js/common.js";
+import "/styles/code.scss";
 import hljs from "/js/highlight.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
