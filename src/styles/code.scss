@@ -90,6 +90,12 @@ main {
       #createdAt {
         font-size: 14px;
         color: rgba(0, 0, 0, 0.4);
+        margin-bottom: 0;
+      }
+
+      #updatedAt {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.4);
       }
 
       .user-info {
@@ -205,18 +211,27 @@ main {
           fill: #fff;
         }
       }
-
-      .delete {
-        height: 40px;
-        width: 80px;
-        background-color: #ee3333;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
+      .edit-box {
         display: flex;
-        justify-content: center;
         align-items: center;
+        gap: 10px;
+        .edit, .delete {
+          height: 40px;
+          width: 80px;
+          color: #fff;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .edit {
+          background-color: $main-color;
+        }
+        .delete {
+          background-color: #ee3333;
+        }
       }
     }
   }
