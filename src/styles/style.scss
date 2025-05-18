@@ -142,15 +142,14 @@ body {
   }
   .category-box {
     display: flex;
-    margin: 10px 0;
+    margin-top: 15px;
     gap: 10px;
     .category {
       text-align: center;
       background-color: white;
       border-radius: 5px;
-      height: 40px;
-      width: 80px;
-      padding: 10px 0;
+      height: 30px;
+      width: 65px;
       &:focus {
         outline: none;
       }
