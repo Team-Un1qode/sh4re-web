@@ -38,11 +38,13 @@ main {
       color: transparent;
       caret-color: white;
       z-index: 2;
+      overflow: auto;
       position: absolute;
       padding: 16px;
       font-size: 1rem;
       border: none;
       resize: none;
+      scrollbar-width: none;
       &:focus {
         outline: none;
       }
@@ -54,6 +56,7 @@ main {
       code {
         height: 100%;
         width: 100%;
+        overflow: auto;
         box-sizing: border-box;
         position: absolute;
         top: 0;
