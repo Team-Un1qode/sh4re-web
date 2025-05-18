@@ -6,3 +6,4 @@ import "/components/login-modal/login-modal.js";
 import "/js/auth.js";
 import "/js/highlight.js";
 import "/js/webBasic.js";
+import "/js/teacherHeader.js";
