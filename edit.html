@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/sh4reIcon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/write.scss" />
+    <title>Sh4re!</title>
+  </head>
+  <body>
+    <main>
+      <div class="content-box">
+        <input class="title-box" placeholder="제목을 입력하세요." />
+        <div class="code-box">
+          <textarea class="code-input"></textarea>
+          <pre>
+            <code class="code language-stylus">코드를 입력하세요.</code>
+          </pre>
+        </div>
+      </div>
+      <div class="upload-box">
+        <ul class="assignment-list"></ul>
+        <button class="share">코드 수정</button>
+      </div>
+    </main>
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/edit.js"></script>
+  </body>
+</html>

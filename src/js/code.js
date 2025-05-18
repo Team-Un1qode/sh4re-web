@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const likeCount = document.querySelector(".like-count");
   const topBox = document.querySelector(".top-box");
   const copyButton = document.querySelector(".copy");
+  const editButton = document.querySelector(".edit");
   const deleteButton = document.querySelector(".delete");
   const userNameText = document.querySelector(".user-name-text");
   let isCopied = false;
@@ -43,6 +44,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     createdAt.id = "createdAt";
     createdAt.innerText = `${formatISOToKoreanDate(data.createdAt)}에 공유됨`;
     topBox.appendChild(createdAt);
+    if(new Date(data.updatedAt) - new Date(data.createdAt) > 1000 * 60){
+      const updatedAt = document.createElement("p");
+      updatedAt.id = "updatedAt";
+      updatedAt.innerText = `(${formatISOToKoreanDate(data.updatedAt)}에 수정됨)`;
+      topBox.appendChild(updatedAt);
+    }
     if (data.liked) likeIcon.classList.add("liked");
     likeCount.innerText = data.likes;
     if (data.code) {
@@ -64,6 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = res.data;
     const username = userNameText.innerText;
     if (data.user.username == username.slice(0, username.length - 1)) {
+      editButton.classList.remove("hidden");
       deleteButton.classList.remove("hidden");
     }
     await renderCodeDetail(data);
@@ -104,6 +112,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 1000);
       }, 400);
     });
+
+    editButton?.addEventListener("click", () => {
+      location.href = `/edit?id=${postId}`;
+    })
 
     deleteButton?.addEventListener("click", async () => {
       try {

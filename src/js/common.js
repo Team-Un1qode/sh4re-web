@@ -194,8 +194,10 @@ export function formatISOToKoreanDate(isoString) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1);
   const day = String(date.getDate());
+  const hour = String(date.getHours()).padStart(2, "0") ;
+  const minute = String(date.getMinutes());
 
-  return `${year}년 ${month}월 ${day}일`;
+  return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
 }
 
 export function escapeHTML(str) {
