@@ -90,12 +90,15 @@ main {
       #createdAt {
         font-size: 14px;
         color: rgba(0, 0, 0, 0.4);
+        margin-left: 5px;
         margin-bottom: 0;
       }
 
       #updatedAt {
-        font-size: 12px;
-        color: rgba(0, 0, 0, 0.4);
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.3);
+        margin-top: 3px;
+        margin-left: 4px;
       }
 
       .user-info {
@@ -113,7 +116,7 @@ main {
 
       .description {
         overflow-x: auto;
-        max-height: 200px;
+        max-height: 300px;
         margin-top: 20px;
         display: flex;
         flex-direction: column;
@@ -122,6 +125,9 @@ main {
         padding: 10px;
         box-sizing: border-box;
         min-height: 100px;
+        @media screen and (max-width: 768px) {
+          max-height: 200px;
+        }
 
         #watermark {
           display: flex;
@@ -164,7 +170,7 @@ main {
 
           &.liked {
             fill: #fff;
-            background-color: $main-color;
+            background-color: $main-bg-color;
             border-color: transparent;
           }
         }
@@ -211,27 +217,56 @@ main {
           fill: #fff;
         }
       }
-      .edit-box {
+
+      .edit, .delete {
+        height: 40px;
+        width: 70px;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
         display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 10px;
-        .edit, .delete {
-          height: 40px;
-          width: 80px;
-          color: #fff;
-          border-radius: 5px;
-          border: none;
-          cursor: pointer;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .edit {
+        background-color: $main-bg-color;
+
+        &:hover {
+          background-color: #0078d4;
+
+          .edit-icon {
+            fill: #92c7ff;
+          }
         }
-        .edit {
-          background-color: $main-color;
+      }
+
+      .delete {
+        background-color: #ee3333;
+
+        &:hover {
+          background-color: #cc0000;
+          
+          .delete-icon {
+            fill: #ff9999;
+          }
         }
-        .delete {
-          background-color: #ee3333;
-        }
+      }
+
+      .edit-icon {
+        min-width: 20px;
+        width: 20px;
+        fill: #fff;
+        transition: fill 0.3s ease;
+      }
+
+      .delete-icon {
+        min-width: 17px;
+        width: 17px;
+        fill: #fff;
+        transition: fill 0.3s ease;
       }
     }
   }
@@ -247,4 +282,5 @@ main {
       list-style: none;
     }
   }
+}
 }
