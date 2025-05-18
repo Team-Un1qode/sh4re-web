@@ -142,18 +142,27 @@ body {
   }
   .category-box {
     display: flex;
-    margin-top: 20px;
+    margin: 10px 0;
     gap: 10px;
     .category {
       text-align: center;
+      background-color: white;
       border-radius: 5px;
-      height: 3vh;
-      width: 8vh;
+      height: 40px;
+      width: 80px;
+      padding: 10px 0;
+      &:focus {
+        outline: none;
+      }
       &:not(:last-child) {
         @media screen and (max-width: 600px) {
           display: none;
         }
       }
+    }
+    .category-assignment {
+      width: 120px;
+      min-width: 80px;
     }
   }
 }
