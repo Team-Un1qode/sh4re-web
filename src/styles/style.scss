@@ -28,6 +28,9 @@ body {
   background-color: #fff;
   border-bottom: 1px solid $gray-border;
   box-sizing: border-box;
+  @media screen and (max-width: 600px) {
+    padding: 0 30px;
+  }
 
   .header-logo ul.logo {
     list-style: none;
@@ -191,7 +194,7 @@ body {
       width: 100%;
       min-height: 380px;
       background-color: #fff;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
       border-radius: 5px;
 
       .code-text {
