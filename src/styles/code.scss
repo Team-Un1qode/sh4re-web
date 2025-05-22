@@ -8,7 +8,7 @@ main {
   grid-template-columns: 1fr 30rem;
   gap: 20px;
   height: 90%;
-  padding: 20px;
+  padding: 2vh 4vw;
   box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
@@ -38,7 +38,7 @@ main {
           top: 0;
           width: 100%;
           height: 100%;
-          font-size: 1.5vw;
+          font-size: 20px;
           white-space: pre-wrap;
 
           @media screen and (max-width: 768px) {
@@ -49,9 +49,9 @@ main {
         #full-screen-icon {
           fill: #d9d9d9;
           position: absolute;
-          width: 30px;
-          bottom: 10px;
-          right: 10px;
+          width: 35px;
+          bottom: 15px;
+          right: 15px;
           cursor: pointer;
 
           @media screen and (max-width: 768px) {
@@ -67,7 +67,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding: 15px;
+    padding: 15px 15px 10px 15px;
     border: 1px solid #e0e0e0;
     box-sizing: border-box;
 
@@ -218,7 +218,8 @@ main {
         }
       }
 
-      .edit, .delete {
+      .edit,
+      .delete {
         height: 40px;
         width: 70px;
         color: #fff;
@@ -248,7 +249,7 @@ main {
 
         &:hover {
           background-color: #cc0000;
-          
+
           .delete-icon {
             fill: #ff9999;
           }
@@ -273,7 +274,7 @@ main {
   .comment-box {
     display: flex;
     flex-direction: column;
-    height: 200px ;
+    height: 200px;
     padding: 15px;
     border: 1px solid #e0e0e0;
     box-sizing: border-box;
