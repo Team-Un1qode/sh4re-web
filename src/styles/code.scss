@@ -4,283 +4,374 @@ $main-color: #007bff;
 $main-bg-color: #0095ff;
 
 main {
-  display: grid;
-  grid-template-columns: 1fr 30rem;
-  gap: 20px;
-  height: 90%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: max-content;
   padding: 2vh 4vw;
+  padding-bottom: 8vh;
   box-sizing: border-box;
-
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 20rem 1fr;
-  }
-
-  .code-box {
-    flex-grow: 1;
-    height: 100%;
+  .code-container {
+    display: grid;
+    grid-template-columns: 1fr 30rem;
+    height: 90vh;
+    gap: 20px;
     box-sizing: border-box;
-    resize: none;
 
-    .code-text {
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 20rem 1fr;
+    }
+
+    .code-box {
+      flex-grow: 1;
       height: 100%;
+      box-sizing: border-box;
+      resize: none;
 
-      pre {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
+      .code-text {
         height: 100%;
-        margin: 0;
 
-        code {
-          box-sizing: border-box;
-          position: absolute;
-          top: 0;
+        pre {
+          position: relative;
+          overflow: hidden;
           width: 100%;
           height: 100%;
-          font-size: 20px;
-          white-space: pre-wrap;
+          margin: 0;
 
-          @media screen and (max-width: 768px) {
-            font-size: 0.8rem;
+          code {
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            white-space: pre-wrap;
+
+            @media screen and (max-width: 768px) {
+              font-size: 0.8rem;
+            }
           }
-        }
 
-        #full-screen-icon {
-          fill: #d9d9d9;
-          position: absolute;
-          width: 35px;
-          bottom: 15px;
-          right: 15px;
-          cursor: pointer;
+          #full-screen-icon {
+            fill: #d9d9d9;
+            position: absolute;
+            width: 35px;
+            bottom: 15px;
+            right: 15px;
+            cursor: pointer;
 
-          @media screen and (max-width: 768px) {
-            display: none;
+            @media screen and (max-width: 768px) {
+              display: none;
+            }
           }
         }
       }
     }
-  }
 
-  .detail-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 15px 15px 10px 15px;
-    border: 1px solid #e0e0e0;
-    box-sizing: border-box;
-
-    .top-box {
+    .detail-box {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 15px 15px 10px 15px;
+      border: 1px solid #e0e0e0;
+      box-sizing: border-box;
 
-      .code-info {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #e0e0e0;
-      }
-
-      .title {
-        font-size: 2rem;
-        font-weight: 500;
-      }
-
-      #createdAt {
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.4);
-        margin-left: 5px;
-        margin-bottom: 0;
-      }
-
-      #updatedAt {
-        font-size: 13px;
-        color: rgba(0, 0, 0, 0.3);
-        margin-top: 3px;
-        margin-left: 4px;
-      }
-
-      .user-info {
-        cursor: pointer;
-        color: black;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-
-        .user-page {
-          text-decoration: none;
-          color: black;
-        }
-      }
-
-      .description {
-        overflow-x: auto;
-        max-height: 300px;
-        margin-top: 20px;
+      .top-box {
         display: flex;
         flex-direction: column;
-        border: 1px solid #e0e0e0;
-        border-radius: 5px;
-        padding: 10px;
-        box-sizing: border-box;
-        min-height: 100px;
-        @media screen and (max-width: 768px) {
-          max-height: 200px;
+
+        .code-info {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #e0e0e0;
         }
 
-        #watermark {
+        .title {
+          font-size: 2rem;
+          font-weight: 500;
+        }
+
+        #createdAt {
+          font-size: 14px;
+          color: rgba(0, 0, 0, 0.4);
+          margin-left: 5px;
+          margin-bottom: 0;
+        }
+
+        #updatedAt {
+          font-size: 13px;
+          color: rgba(0, 0, 0, 0.3);
+          margin-top: 3px;
+          margin-left: 4px;
+        }
+
+        .user-info {
+          cursor: pointer;
+          color: black;
+          text-decoration: none;
           display: flex;
           align-items: center;
-          gap: 3px;
-          margin-top: auto;
-          padding-top: 10px;
-          margin-bottom: 0;
-          color: rgba(0, 0, 0, 0.35);
-          font-size: 14px;
 
-          #generate-by-gpt {
-            margin: 0;
+          .user-page {
+            text-decoration: none;
+            color: black;
           }
-          #gpt-icon {
-            width: 18px;
-            fill: rgba(0, 0, 0, 0.7);
+        }
+
+        .description {
+          overflow-x: auto;
+          max-height: 300px;
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+          border: 1px solid #e0e0e0;
+          border-radius: 5px;
+          padding: 10px;
+          box-sizing: border-box;
+          min-height: 100px;
+          @media screen and (max-width: 768px) {
+            max-height: 200px;
           }
+
+          #watermark {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-top: auto;
+            padding-top: 10px;
+            margin-bottom: 0;
+            color: rgba(0, 0, 0, 0.35);
+            font-size: 14px;
+
+            #generate-by-gpt {
+              margin: 0;
+            }
+            #gpt-icon {
+              width: 18px;
+              fill: rgba(0, 0, 0, 0.7);
+            }
+          }
+        }
+      }
+
+      .bottom-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .like-box {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          #like-icon {
+            height: 20px;
+            width: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            border: 1px solid #d9d9d9;
+            cursor: pointer;
+
+            &.liked {
+              fill: #fff;
+              background-color: $main-bg-color;
+              border-color: transparent;
+            }
+          }
+        }
+
+        @keyframes copied {
+          0% {
+            background-color: $main-bg-color;
+            transform: rotate(0deg);
+          }
+          80% {
+            transform: rotate(-3deg);
+          }
+          95% {
+            background-color: $main-color;
+            transform: rotate(1deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+
+        .copy {
+          height: 40px;
+          width: 100%;
+          background-color: $main-bg-color;
+          color: #fff;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.9rem;
+          font-weight: 700;
+
+          &.copied {
+            animation: copied 0.4s ease-in-out;
+          }
+
+          svg {
+            width: 1.3rem;
+            height: 1.3rem;
+            fill: #fff;
+          }
+        }
+
+        .edit,
+        .delete {
+          height: 40px;
+          width: 70px;
+          color: #fff;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: background-color 0.3s ease;
+        }
+
+        .edit {
+          background-color: $main-bg-color;
+
+          &:hover {
+            background-color: #0078d4;
+
+            .edit-icon {
+              fill: #92c7ff;
+            }
+          }
+        }
+
+        .delete {
+          background-color: #ee3333;
+
+          &:hover {
+            background-color: #cc0000;
+
+            .delete-icon {
+              fill: #ff9999;
+            }
+          }
+        }
+
+        .edit-icon {
+          min-width: 20px;
+          width: 20px;
+          fill: #fff;
+          transition: fill 0.3s ease;
+        }
+
+        .delete-icon {
+          min-width: 17px;
+          width: 17px;
+          fill: #fff;
+          transition: fill 0.3s ease;
         }
       }
     }
-
-    .bottom-box {
+    .comment-box {
       display: flex;
-      align-items: center;
-      gap: 15px;
-
-      .like-box {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-
-        #like-icon {
-          height: 20px;
-          width: 20px;
-          padding: 10px;
-          border-radius: 50%;
-          border: 1px solid #d9d9d9;
-          cursor: pointer;
-
-          &.liked {
-            fill: #fff;
-            background-color: $main-bg-color;
-            border-color: transparent;
-          }
-        }
-      }
-
-      @keyframes copied {
-        0% {
-          background-color: $main-bg-color;
-          transform: rotate(0deg);
-        }
-        80% {
-          transform: rotate(-3deg);
-        }
-        95% {
-          background-color: $main-color;
-          transform: rotate(1deg);
-        }
-        100% {
-          transform: rotate(0deg);
-        }
-      }
-
-      .copy {
-        height: 40px;
-        width: 100%;
-        background-color: $main-bg-color;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.9rem;
-        font-weight: 700;
-
-        &.copied {
-          animation: copied 0.4s ease-in-out;
-        }
-
-        svg {
-          width: 1.3rem;
-          height: 1.3rem;
-          fill: #fff;
-        }
-      }
-
-      .edit,
-      .delete {
-        height: 40px;
-        width: 70px;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: background-color 0.3s ease;
-      }
-
-      .edit {
-        background-color: $main-bg-color;
-
-        &:hover {
-          background-color: #0078d4;
-
-          .edit-icon {
-            fill: #92c7ff;
-          }
-        }
-      }
-
-      .delete {
-        background-color: #ee3333;
-
-        &:hover {
-          background-color: #cc0000;
-
-          .delete-icon {
-            fill: #ff9999;
-          }
-        }
-      }
-
-      .edit-icon {
-        min-width: 20px;
-        width: 20px;
-        fill: #fff;
-        transition: fill 0.3s ease;
-      }
-
-      .delete-icon {
-        min-width: 17px;
-        width: 17px;
-        fill: #fff;
-        transition: fill 0.3s ease;
+      flex-direction: column;
+      height: 200px;
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      box-sizing: border-box;
+      overflow: auto;
+      .comment-list {
+        list-style: none;
       }
     }
   }
   .comment-box {
     display: flex;
     flex-direction: column;
-    height: 200px;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    box-sizing: border-box;
-    overflow: auto;
+    gap: 10px;
+    margin-top: 30px;
+    .comment-title {
+      margin: 0;
+      font-weight: 500;
+    }
+    .comment-form {
+      display: flex;
+      margin-top: 5px;
+      gap: 5px;
+      max-width: 400px;
+      width: 100%;
+      .comment-input {
+        padding: 10px 15px;
+        font-size: 14px;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid rgba(0,0,0,0.3);
+        flex: 1;
+      }
+      .comment-submit {
+        background-color: #0095FF;
+        color: white;
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+    }
     .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 0;
+      margin-top: 20px;
+      padding: 0;
       list-style: none;
+      .comment {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        .comment-info {
+          display: flex;
+          align-items: end;
+          gap: 10px;
+          .comment-author {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 400;
+          }
+          .comment-date {
+            color: rgba(0, 0, 0, 0.3);
+            font-size: 12px;
+            margin: 0;
+            font-weight: 400;
+          }
+          .comment-delete {
+            top: 0;
+            bottom: 0;
+            height: fit-content;
+            margin: auto 0;
+            right: 10px;
+            position: absolute;
+            padding: 10px 12px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+        .comment-content {
+          margin: 0;
+          font-weight: 300;
+        }
+      }
     }
   }
 }
