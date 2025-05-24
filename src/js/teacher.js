@@ -2,6 +2,8 @@ import { customFetch, loadCodes } from "/js/common.js";
 import "/styles/teacher.scss";
 
 const searchParams = new URLSearchParams(window.location.search);
+let totalPages = 1;
+let page = +searchParams.get("page") ?? 1;
 let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
 let assignmentValueRaw = searchParams.get("assignmentId");
@@ -132,4 +134,32 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (e) {
     console.error("API 요청 중 에러", e);
   }
+});
+
+const renderPages = () => {
+  if (page < 1) page = 1;
+  const weight = Math.floor((page - 1) / 5);
+  const start = weight * 5 + 1;
+  const pageList = document.querySelector(".page-list");
+  pageList.innerHTML = "";
+  for (let i = start; i < start + 5; i++) {
+    if (i > totalPages) break;
+    const pageButton = document.createElement("button");
+    if (i === page) {
+      pageButton.classList.add("active");
+    }
+    pageButton.classList.add("page-button");
+    pageButton.dataset.page = i;
+    pageButton.innerText = i;
+    pageButton.addEventListener("click", function () {
+      page = +this.dataset.page;
+      window.location.href = `/teacher?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
+    });
+    pageList.appendChild(pageButton);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+  totalPages = await loadCodes();
+  renderPages();
 });
