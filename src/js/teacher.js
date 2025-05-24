@@ -2,6 +2,9 @@ import { customFetch, loadCodes } from "/js/common.js";
 import "/styles/teacher.scss";
 
 const searchParams = new URLSearchParams(window.location.search);
+const randomBtn = document.querySelector(".random-choice");
+let totalPages = 1;
+let page = +searchParams.get("page") ?? 1;
 let sortValue = searchParams.get("criteria") ?? "createdAt";
 let classValue = searchParams.get("classNo") ?? "";
 let assignmentValueRaw = searchParams.get("assignmentId");
@@ -131,5 +134,81 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   } catch (e) {
     console.error("API 요청 중 에러", e);
+  }
+});
+
+const renderPages = () => {
+  if (page < 1) page = 1;
+  const weight = Math.floor((page - 1) / 5);
+  const start = weight * 5 + 1;
+  const pageList = document.querySelector(".page-list");
+  pageList.innerHTML = "";
+  for (let i = start; i < start + 5; i++) {
+    if (i > totalPages) break;
+    const pageButton = document.createElement("button");
+    if (i === page) {
+      pageButton.classList.add("active");
+    }
+    pageButton.classList.add("page-button");
+    pageButton.dataset.page = i;
+    pageButton.innerText = i;
+    pageButton.addEventListener("click", function () {
+      page = +this.dataset.page;
+      window.location.href = `/teacher?page=${page}&criteria=${sortValue}&classNo=${classValue}&assignmentId=${assignmentValue}`;
+    });
+    pageList.appendChild(pageButton);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", async function () {
+  totalPages = await loadCodes();
+  renderPages();
+});
+
+function getStorageKey() {
+  const params = new URLSearchParams(window.location.search);
+  const classNo = params.get("classNo") ?? "";
+  const assignmentId = params.get("assignmentId") ?? "";
+  const criteria = params.get("criteria") ?? "";
+  return `randomCodeIds_${classNo}_${assignmentId}_${criteria}`;
+}
+
+function getAllCodeIds() {
+  return Array.from(document.querySelectorAll(".post-list-box .code-text")).map(
+    (el) => el.id
+  );
+}
+
+function getAvailableIds() {
+  const storageKey = getStorageKey();
+  let available = JSON.parse(localStorage.getItem(storageKey));
+  const allIds = getAllCodeIds();
+  if (
+    !Array.isArray(available) ||
+    available.some((id) => !allIds.includes(id))
+  ) {
+    available = allIds;
+    localStorage.setItem(storageKey, JSON.stringify(available));
+  }
+  return available;
+}
+
+document.querySelector(".random-choice").addEventListener("click", function () {
+  const storageKey = getStorageKey();
+  let available = getAvailableIds();
+  if (available.length === 0) {
+    alert("더 이상 발표할 사람이 없습니다!");
+    return;
+  }
+  const randomIndex = Math.floor(Math.random() * available.length);
+  const selectedId = available.splice(randomIndex, 1)[0];
+  localStorage.setItem(storageKey, JSON.stringify(available));
+
+  const codeEl = document.getElementById(selectedId);
+  const detailPageLink = codeEl?.querySelector("a.detail-page");
+  if (detailPageLink && detailPageLink.href) {
+    window.location.href = detailPageLink.href;
+  } else {
+    alert("코드 상세 페이지 링크를 찾을 수 없습니다.");
   }
 });

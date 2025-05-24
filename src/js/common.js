@@ -153,6 +153,7 @@ export const loadCodes = async () => {
   if (codes.ok && codes.data) {
     list.innerHTML = "";
     for (let i = 0; i < codes.data.codes.length; i++) {
+      const codeId = i;
       const code = codes.data.codes[i];
       const article = document.createElement("article");
       const formattedStudentNumber = String(code.user.studentNumber).padStart(
@@ -161,7 +162,7 @@ export const loadCodes = async () => {
       );
       article.className = "post-list-box";
       article.innerHTML = `
-                <div class="code-text">
+                <div class="code-text" id=${codeId}>
                 <a href="/code?id=${code.id}" class="detail-page">
                   <pre><code class="language-python">${code.code}</code></pre>
                 </div>
@@ -202,9 +203,9 @@ export function formatISOToKoreanDate(isoString) {
 
 export function escapeHTML(str) {
   return str
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
