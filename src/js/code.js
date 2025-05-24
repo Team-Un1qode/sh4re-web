@@ -18,12 +18,55 @@ document.addEventListener("DOMContentLoaded", async () => {
   const editButton = document.querySelector(".edit");
   const deleteButton = document.querySelector(".delete");
   const userNameText = document.querySelector(".user-name-text");
+  const commentList = document.querySelector(".comment-list");
+  const commentForm = document.querySelector(".comment-form");
+  const commentInput = document.querySelector(".comment-input");
+  const commentSubmitButton = document.querySelector(".comment-submit");
   let isCopied = false;
   let likeLoading = false;
+  let createCommentLoading = false;
 
   const copySound = new Audio("/sounds/success.mp3");
   copySound.playbackRate = 1.7;
   copySound.volume = 1;
+
+  const deleteComment = async (commentId, ele) => {
+    if(!confirm("정말 해당 댓글을 삭제하시겠습니까?")) return;
+    try {
+      const res = await customFetch(`/codes/comment/${commentId}`, {
+        method: "DELETE",
+      });
+      if(res.ok){
+        ele.remove();
+      }
+    } catch(e) {
+      alert("댓글 삭제 중 에러가 발생했습니다.")
+      console.log(e);
+    }
+  }
+
+  const paintComment = (comment, isNew = false) => {
+    const newComment = document.createElement("li");
+    newComment.classList.add("comment");
+    const username = userNameText.innerText;
+    const isAuthor = comment.author.username === username.slice(0, username.length - 1);
+    newComment.innerHTML = `
+        <div class="comment-info">
+          <h3 class="comment-author">${comment.author.name}</h3>
+          <h3 class="comment-date">${formatISOToKoreanDate(comment.createdAt)}</h3>
+          ${isAuthor ? '<button class="comment-delete">댓글 삭제</button>' : ""}
+        </div>
+        <p class="comment-content">${comment.content}</p>
+      `;
+    if (isAuthor){
+      newComment.querySelector(".comment-delete").addEventListener("click", async () => {
+        await deleteComment(comment.id, newComment);
+      })
+    }
+    if(isNew){
+      commentList.prepend(newComment);
+    } else commentList.appendChild(newComment);
+  }
 
   async function renderCodeDetail(data) {
     const formattedStudentNumber = String(data.user.studentNumber).padStart(
@@ -53,6 +96,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     if (data.liked) likeIcon.classList.add("liked");
     likeCount.innerText = data.likes;
+    data.commentList.map(comment => {
+      paintComment(comment);
+    })
     if (data.code) {
       codeElement.textContent = data.code;
       await hljs.highlightAll();
@@ -71,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const data = res.data;
     const username = userNameText.innerText;
-    if (data.user.username == username.slice(0, username.length - 1)) {
+    if (data.user.username === username.slice(0, username.length - 1)) {
       editButton.classList.remove("hidden");
       deleteButton.classList.remove("hidden");
     }
@@ -145,6 +191,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         alert("게시물 삭제 중 오류가 발생했습니다.");
       }
     });
+
+    commentForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if(createCommentLoading || !commentInput.value) return;
+      const content = await commentInput.value;
+      commentInput.value = "";
+      try {
+        createCommentLoading = true;
+        commentSubmitButton.innerText = "로딩 중..";
+        const res = await customFetch(`/codes/${postId}/comment`, {
+          method: "POST",
+          body: {
+            content,
+          }
+        })
+        if(res.ok) {
+          paintComment(res.data.comment, true);
+        }
+      } catch(e){
+        alert("댓글을 생성하는 중 에러가 발생하였습니다.")
+        console.log(e);
+      } finally {
+        commentSubmitButton.innerText = "댓글 작성";
+        createCommentLoading = false;
+      }
+    })
   } catch (e) {
     console.error("API 요청 중 에러", e);
   }
