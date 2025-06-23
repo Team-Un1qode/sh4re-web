@@ -31,6 +31,6 @@ RUN rm /etc/nginx/conf.d/default.conf
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 8880
+EXPOSE 10001
 
 CMD ["nginx", "-g", "daemon off;"]

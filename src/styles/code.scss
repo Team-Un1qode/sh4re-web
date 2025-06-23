@@ -14,7 +14,7 @@ main {
   .code-container {
     display: grid;
     grid-template-columns: 1fr 30rem;
-    height: 90vh;
+    min-height: 90vh;
     gap: 20px;
     box-sizing: border-box;
 
