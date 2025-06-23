@@ -18,7 +18,7 @@ export const customFetch = async (
       "Content-Type": "application/json",
       Authorization: token ? `Bearer ${token}` : "",
     };
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}${url}`, {
+    const res = await fetch(`${window.runtimeConfig.backendUrl}${url}`, {
       method,
       headers,
       body: JSON.stringify(body),
